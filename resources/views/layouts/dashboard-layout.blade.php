@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AdPilot | Dashboard</title>
+    <link rel="stylesheet" href="">
     @vite('resources/css/app.css')
 </head>
 <body>
-    <h1 class="text-blue-900 text-3xl font-bold">Dashboard Layout</h1>
-    <hr />
     {{ $slot }}
 </body>
 </html>
