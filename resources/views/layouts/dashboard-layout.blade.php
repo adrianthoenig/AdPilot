@@ -12,5 +12,9 @@
 <body>
     <x-dashboard.navbar />
     {{ $slot }}
+    <div class="flex">
+        <x-dashboard.sidebar />
+        <x-dashboard.main />
+    </div>
 </body>
 </html>
