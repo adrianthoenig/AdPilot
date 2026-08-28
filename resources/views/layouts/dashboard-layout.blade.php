@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <h1 class="text-blue-900">Dashboard Layout</h1>
+    <h1 class="text-blue-900 text-3xl font-bold">Dashboard Layout</h1>
     <hr />
     {{ $slot }}
 </body>
