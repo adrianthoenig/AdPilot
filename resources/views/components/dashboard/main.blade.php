@@ -1,3 +1,5 @@
-<main class="bg-red-200 flex-1">
-    <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
+<main class="bg-gray-200 flex-1 p-6">
+    <div class="flex items-center justify-between">
+        <h1 class="text-4xl text-black">Page Title</h1>
+    </div>
 </main>
