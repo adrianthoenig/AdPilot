@@ -9,6 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+    <x-dashboard.navbar />
     {{ $slot }}
 </body>
 </html>
