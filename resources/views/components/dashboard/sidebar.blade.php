@@ -1,4 +1,4 @@
-<nav class="p-6 bg-gray-200 flex flex-col justify-between h-screen">
+<nav class="p-6 bg-gray-200 flex flex-col justify-between">
     {{-- Top Groups --}}
     <div class="flex flex-col gap-8">
         <x-dashboard.sidebar-group>
