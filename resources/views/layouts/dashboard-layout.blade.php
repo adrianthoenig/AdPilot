@@ -13,9 +13,7 @@
     <x-dashboard.navbar />
     <div class="flex">
         <x-dashboard.sidebar />
-        <x-dashboard.main>
-            {{ $slot }}
-        </x-dashboard.main>
+        {{ $slot }}
     </div>
 </body>
 </html>
