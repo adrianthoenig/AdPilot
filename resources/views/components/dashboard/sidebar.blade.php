@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-8">
         <x-dashboard.sidebar-group>
             <x-dashboard.sidebar-button icon="briefcase"/>
-            <x-dashboard.sidebar-button icon="user-group" url="/dashboard/client" />
+            <x-dashboard.sidebar-button icon="user-group" url="{{ route('dashboard.client.index') }}" />
             <x-dashboard.sidebar-button icon="user-plus" />
         </x-dashboard.sidebar-group>
 
