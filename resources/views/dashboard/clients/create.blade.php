@@ -88,7 +88,45 @@
                     </x-dashboard.forms.form-block>
 
                     <x-dashboard.forms.form-block label="Client status">
+                        <div class="flex items-center gap-6">
+                            <x-inputs.radio 
+                            id="onboarding"
+                            name="onboarding"
+                            value="onboarding"
+                            title="Onboarding"
+                            icon="fas fa-clipboard"
+                            message="Your client is still in the onboarding phase."
+                            />
 
+                            <x-inputs.radio 
+                            id="active"
+                            name="active"
+                            value="active"
+                            title="Active"
+                            icon="fas fa-chart-line"
+                            message="You’re already working with the client."
+                            />
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <x-inputs.radio 
+                            id="paused"
+                            name="paused"
+                            value="paused"
+                            title="Paused"
+                            icon="fas fa-pause"
+                            message="Client paused for future work."
+                            />
+
+                            <x-inputs.radio 
+                            id="draft"
+                            name="draft"
+                            value="draft"
+                            title="Draft"
+                            icon="fas fa-box"
+                            message="Make a draft to save it for later."
+                            />
+                        </div>
                     </x-dashboard.forms.form-block>
 
                     <x-dashboard.forms.form-block label="Budget and schedule">
@@ -122,7 +160,40 @@
                     </x-dashboard.forms.form-block>
 
                     <x-dashboard.forms.form-block label="Advertising platforms">
+                        <div class="flex items-center gap-6">
+                            <x-inputs.radio 
+                            id="meta_ads"
+                            name="meta_ads"
+                            value="meta_ads"
+                            title="Meta Ads"
+                            icon="fab fa-meta"
+                            />
 
+                            <x-inputs.radio 
+                            id="google_ads"
+                            name="google_ads"
+                            value="google_ads"
+                            title="Google Ads"
+                            icon="fab fa-google"
+                            />
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <x-inputs.radio 
+                            id="tiktok_ads"
+                            name="tiktok_ads"
+                            value="tiktok_ads"
+                            title="TikTok Ads"
+                            icon="fab fa-tiktok"
+                            />
+
+                            <x-inputs.radio 
+                            id="linkedin_ads"
+                            name="linkedin_ads"
+                            value="linkedin_ads"
+                            title="Linkedin Ads"
+                            icon="fab fa-linkedin"
+                            />
+                        </div>
                     </x-dashboard.forms.form-block>
                 </div>
                 <x-dashboard.forms.summary 
