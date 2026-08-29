@@ -86,6 +86,44 @@
                         ]"
                         />
                     </x-dashboard.forms.form-block>
+
+                    <x-dashboard.forms.form-block label="Client status">
+
+                    </x-dashboard.forms.form-block>
+
+                    <x-dashboard.forms.form-block label="Budget and schedule">
+                        <x-inputs.text
+                        id="start_date"
+                        name="start_date"
+                        type="date"
+                        placeholder="03 / 08 2026"
+                        label="Start Date"
+                        />
+
+                        <x-inputs.select 
+                        id="currency"
+                        name="currency"
+                        label="Currency"
+                        required="true"
+                        :options="[
+                            'eur' => 'Euro (€)',
+                            'gbp' => 'Pound Sterling (£)',
+                            'usd' => 'US Dollar ($)'
+                        ]"
+                        />
+
+                        <x-inputs.text 
+                        id="monthly_budget"
+                        name="monthly_budget"
+                        placeholder="3.840€"
+                        type="number"
+                        label="Monthly budget"
+                        />
+                    </x-dashboard.forms.form-block>
+
+                    <x-dashboard.forms.form-block label="Advertising platforms">
+
+                    </x-dashboard.forms.form-block>
                 </div>
                 <div class="bg-white p-6 rounded-xl flex gap-6">
 

@@ -4,7 +4,7 @@
         <x-dashboard.sidebar-group>
             <x-dashboard.sidebar-button icon="briefcase"/>
             <x-dashboard.sidebar-button icon="user-group" url="{{ route('dashboard.clients.index') }}" />
-            <x-dashboard.sidebar-button icon="user-plus" />
+            <x-dashboard.sidebar-button icon="user-plus" url="{{ route('dashboard.clients.create') }}"/>
         </x-dashboard.sidebar-group>
 
         <x-dashboard.sidebar-group>
