@@ -15,4 +15,5 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // DASHBOARD -> CLIENTS
-Route::get('/dashboard/clients', [ClientController::class, 'index'])->name('dashboard.client.index');
+Route::get('/dashboard/clients', [ClientController::class, 'index'])->name('dashboard.clients.index');
+Route::get('/dashboard/clients/create', [ClientController::class, 'create'])->name('dashboard.clients.create');
