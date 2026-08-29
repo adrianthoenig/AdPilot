@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PrimaryInput extends Component
+class Summary extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class PrimaryInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.inputs.submit');
+        return view('components.dashboard.forms.summary');
     }
 }

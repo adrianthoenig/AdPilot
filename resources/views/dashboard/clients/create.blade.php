@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-dashboard.main title="Add new client">
-            <form action="/dashboard/clients/" method="POST" class="flex gap-6">
+            <form action="/dashboard/clients/" method="POST" class="flex items-start gap-6">
                 @csrf
                 <div class="bg-white flex-1 p-6 rounded-3xl flex flex-col gap-8">
                     <x-dashboard.forms.form-block label="Company information">
@@ -125,9 +125,16 @@
 
                     </x-dashboard.forms.form-block>
                 </div>
-                <div class="bg-white p-6 rounded-xl flex gap-6">
-
-                </div>
+                <x-dashboard.forms.summary 
+                summaryTitle="Client Summary"
+                :fields="[
+                    'Company name' => 'MogulZ Media',
+                    'Client status' => 'Onboarding',
+                    'Total fields' => 13,
+                    'Required' => '4/4',
+                    'Status' => 'Ready'
+                ]"
+                />
             </form>
         </div>
     </x-dashboard.main>
