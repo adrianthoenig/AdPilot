@@ -87,7 +87,7 @@
                         />
                     </x-dashboard.forms.form-block>
 
-                    <x-dashboard.forms.form-block label="Client status">
+                    <x-dashboard.forms.form-block gap="2" label="Client status">
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="onboarding"
@@ -159,8 +159,7 @@
                         />
                     </x-dashboard.forms.form-block>
                     
-                    <!-- 
-                    <x-dashboard.forms.form-block label="Advertising platforms">
+                    <x-dashboard.forms.form-block gap="2" label="Advertising platforms">
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="meta_ads"
@@ -196,7 +195,6 @@
                             />
                         </div>
                     </x-dashboard.forms.form-block>
-                -->
                 </div>
                 <x-dashboard.forms.summary 
                 summaryTitle="Client Summary"
