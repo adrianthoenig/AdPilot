@@ -91,7 +91,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="onboarding"
-                            name="onboarding"
+                            name="status"
                             value="onboarding"
                             title="Onboarding"
                             icon="fas fa-clipboard"
@@ -100,7 +100,7 @@
 
                             <x-inputs.radio 
                             id="active"
-                            name="active"
+                            name="status"
                             value="active"
                             title="Active"
                             icon="fas fa-chart-line"
@@ -111,7 +111,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="paused"
-                            name="paused"
+                            name="status"
                             value="paused"
                             title="Paused"
                             icon="fas fa-pause"
@@ -120,7 +120,7 @@
 
                             <x-inputs.radio 
                             id="draft"
-                            name="draft"
+                            name="status"
                             value="draft"
                             title="Draft"
                             icon="fas fa-box"
@@ -163,7 +163,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="meta_ads"
-                            name="meta_ads"
+                            name="platforms"
                             value="meta_ads"
                             title="Meta Ads"
                             icon="fab fa-meta"
@@ -171,7 +171,7 @@
 
                             <x-inputs.radio 
                             id="google_ads"
-                            name="google_ads"
+                            name="platforms"
                             value="google_ads"
                             title="Google Ads"
                             icon="fab fa-google"
@@ -180,7 +180,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="tiktok_ads"
-                            name="tiktok_ads"
+                            name="platforms"
                             value="tiktok_ads"
                             title="TikTok Ads"
                             icon="fab fa-tiktok"
@@ -188,7 +188,7 @@
 
                             <x-inputs.radio 
                             id="linkedin_ads"
-                            name="linkedin_ads"
+                            name="platforms"
                             value="linkedin_ads"
                             title="Linkedin Ads"
                             icon="fab fa-linkedin"

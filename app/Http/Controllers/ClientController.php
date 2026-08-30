@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -17,5 +18,11 @@ class ClientController extends Controller
     // @route   GET /dashboard/clients/create
     public function create() : View {
         return view('dashboard.clients.create');
+    }
+
+    // @desc    Stores new created client
+    // @route   POST /dashboard/clients
+    public function store() : RedirectResponse {
+        return redirect()->route('dashboard.clients.index');
     }
 }

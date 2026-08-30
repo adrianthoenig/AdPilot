@@ -17,3 +17,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // DASHBOARD -> CLIENTS
 Route::get('/dashboard/clients', [ClientController::class, 'index'])->name('dashboard.clients.index');
 Route::get('/dashboard/clients/create', [ClientController::class, 'create'])->name('dashboard.clients.create');
+Route::post('/dashboard/clients', [ClientController::class, 'store'])->name('dashboard.clients.store');
