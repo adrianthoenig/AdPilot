@@ -15,7 +15,7 @@
     <div
         class="cursor-pointer p-3 flex flex-col gap-2 bg-gray-100 peer-checked:bg-gray-200 peer-checked:outline peer-checked:outline-gray-700 hover:bg-gray-200 rounded-lg">
         <div class="flex gap-2 items-center">
-            @if($icon)<i class="{{ $icon }}"></i>@endif
+            @if($icon)<i class="{{ $icon }} text-secondary-300"></i>@endif
             <h4 class="text-lg">{{ $title }}</h4>
         </div>
         @if($message)
