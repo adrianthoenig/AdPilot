@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-dashboard.main title="All clients">
-        <x-dashboard.buttons.primary-btn title="Add new client" url="{{ route('dashboard.clients.create') }}" />
+        <x-dashboard.clients.shell />
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             @forelse($clients as $client)
             <x-client-card
