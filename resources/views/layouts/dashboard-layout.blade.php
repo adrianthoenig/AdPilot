@@ -15,5 +15,6 @@
         <x-dashboard.sidebar.sidebar />
         {{ $slot }}
     </div>
+    <x-dashboard.flash.toast />
 </body>
 </html>
