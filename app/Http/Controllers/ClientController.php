@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+use App\Models\Client;
+
 class ClientController extends Controller
 {
     // @desc    Shows all clients available
@@ -22,7 +24,25 @@ class ClientController extends Controller
 
     // @desc    Stores new created client
     // @route   POST /dashboard/clients
-    public function store() : RedirectResponse {
-        return redirect()->route('dashboard.clients.index');
+    public function store(Request $request) : RedirectResponse {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'industry' => ['nullable'],
+            'website' => ['url', 'nullable'],
+            'country' => ['string', 'nullable'],
+            'city' => ['string', 'nullable'],
+            'logo_path' => ['nullable', 'image', 'mimes:jpg,webp,png,jpg'],
+            'primary_contact_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:clients'],
+            'phone' => ['nullable', 'numeric'],
+            'job_title' => ['nullable'],
+            'status' => ['nullable'],
+            'start_date' => ['nullable'],
+            'currency' => ['required'],
+            'monthly_budget' => ['nullable']
+        ]);
+
+        Client::create($validatedData);
+        return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully created');
     }
 }

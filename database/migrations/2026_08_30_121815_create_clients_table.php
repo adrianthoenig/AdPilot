@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('logo_path')->nullable();
 
             $table->string('primary_contact_name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('phone')->nullable();
 
             $table->enum('job_title', [
