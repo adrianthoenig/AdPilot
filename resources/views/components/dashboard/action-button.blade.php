@@ -3,6 +3,6 @@
     'icon' => 'eye'
 ])
 
-<a href="{{ $url }}" class="bg-gray-100 hover:bg-gray-200 rounded-lg px-4 py-3">
-    <i class="fas fa-{{ $icon }}"></i>
+<a href="{{ $url }}" class="bg-primary-200 hover:bg-primary-300 rounded-lg px-4 py-3">
+    <i class="fas fa-{{ $icon }} text-primary-900"></i>
 </a>
