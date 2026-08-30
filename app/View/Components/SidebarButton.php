@@ -21,6 +21,6 @@ class SidebarButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.sidebar-button');
+        return view('components.dashboard.sidebar.sidebar-button');
     }
 }
