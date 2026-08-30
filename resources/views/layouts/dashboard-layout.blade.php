@@ -11,7 +11,7 @@
 </head>
 <body>
     <x-dashboard.navbar />
-    <div class="flex">
+    <div class="flex min-h-screen">
         <x-dashboard.sidebar />
         {{ $slot }}
     </div>
