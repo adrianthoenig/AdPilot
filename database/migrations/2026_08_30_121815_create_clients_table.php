@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');            
             
             $table->enum('industry', [
-                'ecommerce',
-                'marketing',
-                'software'
+                'Ecommerce',
+                'Marketing',
+                'Software'
             ])->nullable();
 
             $table->string('website')->nullable();

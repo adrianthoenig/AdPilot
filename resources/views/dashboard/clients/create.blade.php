@@ -16,8 +16,8 @@
                         name="industry" 
                         label="Industry"
                         :options="[
-                                'ecommerce' => 'Ecommerce',
-                                'marketing' => 'Marketing'
+                                'Ecommerce' => 'Ecommerce',
+                                'Marketing' => 'Marketing'
                             ]"/>
 
                         <x-inputs.text 
@@ -81,8 +81,8 @@
                         name="job_title"
                         label="Job title"
                         :options="[
-                            'cmo' => 'Chief Marketing Officer (CMO)',
-                            'ceo' => 'Chief Executive Officer (CEO)'
+                            'cmo' => 'cmo',
+                            'ceo' => 'ceo'
                         ]"
                         />
                     </x-dashboard.forms.form-block>
@@ -144,9 +144,9 @@
                         label="Currency"
                         required="true"
                         :options="[
-                            'eur' => 'Euro (€)',
-                            'gbp' => 'Pound Sterling (£)',
-                            'usd' => 'US Dollar ($)'
+                            'eur' => 'eur',
+                            'gbp' => 'gbp',
+                            'usd' => 'usd'
                         ]"
                         />
 

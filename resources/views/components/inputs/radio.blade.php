@@ -12,7 +12,7 @@
     type="radio" 
     id="{{ $id }}" 
     name="{{ $name }}" 
-    value="huey" checked
+    value="{{ $value }}" checked
     class=""
 >
     <div class="cursor-pointer p-3 flex flex-col gap-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
