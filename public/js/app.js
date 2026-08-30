@@ -1,14 +1,8 @@
-// Toast message
-document.addEventListener('DOMContentLoaded', () => {
-    const toast = document.getElementById('toast');
-    console.log(toast);
-    if(!toast) return;
+import toast from "./toast.js";
 
-    toast.addEventListener('click', (e) => {
+function init() {
+    // Toast messages
+    toast();
+}
 
-    })
-
-    setTimeout(() => {
-        toast.remove();
-    }, 4000);
-})
+init();

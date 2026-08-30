@@ -10,7 +10,7 @@
         <i class="fas fa-square-check text-xl text-emerald-500"></i>
         {{ $message }}
     </div>
-    <button class="cursor-pointer bg-emerald-800 hover:bg-emerald-700 text-emerald-200 px-4 py-2 rounded-lg">
+    <button id="toastBtn" class="cursor-pointer bg-emerald-800 hover:bg-emerald-700 text-emerald-200 px-4 py-2 rounded-lg">
         {{ $action }}
     </button>
 </div>
@@ -22,7 +22,7 @@
         <i class="fas fa-circle-xmark text-xl text-red-500"></i>
         {{ $message }}
     </div>
-    <button class="cursor-pointer bg-red-800 hover:bg-red-700 text-red-200 px-4 py-2 rounded-lg">
+    <button id="toastBtn" class="cursor-pointer bg-red-800 hover:bg-red-700 text-red-200 px-4 py-2 rounded-lg">
         {{ $action }}
     </button>
 </div>
@@ -34,7 +34,7 @@
         <i class="fas fa-triangle-exclamation text-xl text-amber-500"></i>
         {{ $message }}
     </div>
-    <button class="cursor-pointer bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg">
+    <button id="toastBtn" class="cursor-pointer bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg">
         {{ $action }}
     </button>
 </div>
@@ -46,7 +46,7 @@
         <i class="fas fa-circle-info text-xl text-blue-500"></i>
         {{ $message }}
     </div>
-    <button class="cursor-pointer bg-blue-800 hover:bg-blue-700 text-blue-200 px-4 py-2 rounded-lg">
+    <button id="toastBtn" class="cursor-pointer bg-blue-800 hover:bg-blue-700 text-blue-200 px-4 py-2 rounded-lg">
         {{ $action }}
     </button>
 </div>

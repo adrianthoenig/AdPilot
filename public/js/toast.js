@@ -1,14 +1,16 @@
-// Toast message
-document.addEventListener('DOMContentLoaded', () => {
+export default function toast() {
     const toast = document.getElementById('toast');
-    console.log(toast);
-    if(!toast) return;
+    if (!toast) return;
 
     toast.addEventListener('click', (e) => {
+        const clicked = e.target.closest('#toastBtn');
+        if (!clicked) return;
 
+        toast.remove();
+        clearTimeout(timeout);
     })
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
         toast.remove();
     }, 4000);
-})
+}
