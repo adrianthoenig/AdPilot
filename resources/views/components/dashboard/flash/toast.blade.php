@@ -5,7 +5,7 @@
 ])
 
 @if($type == 'success')
-<div class="fixed bottom-4 left-4 rounded-lg p-4 bg-emerald-50 border-emerald-200 text-emerald-800 flex items-center gap-14 ">
+<div id="toast" class="fixed bottom-4 left-4 rounded-lg p-4 bg-emerald-50 border-emerald-200 text-emerald-800 flex items-center gap-14 ">
     <div class="flex items-center gap-2">
         <i class="fas fa-square-check text-xl text-emerald-500"></i>
         {{ $message }}
