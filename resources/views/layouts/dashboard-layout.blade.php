@@ -15,6 +15,17 @@
         <x-dashboard.sidebar.sidebar />
         {{ $slot }}
     </div>
-    <x-dashboard.flash.toast />
+    @if(session('success'))
+    <x-dashboard.flash.toast type="success" message="{{ session('success') }}" />
+    @endif
+    @if(session('error'))
+    <x-dashboard.flash.toast type="error" message="{{ session('error') }}" />
+    @endif
+    @if(session('warning'))
+    <x-dashboard.flash.toast type="warning" message="{{ session('warning') }}" />
+    @endif
+    @if(session('info'))
+    <x-dashboard.flash.toast type="info" message="{{ session('info') }}" />
+    @endif
 </body>
 </html>
