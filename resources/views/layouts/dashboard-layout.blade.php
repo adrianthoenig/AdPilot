@@ -10,9 +10,9 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-dashboard.navbar />
+    <x-dashboard.navbar.navbar />
     <div class="flex min-h-screen">
-        <x-dashboard.sidebar />
+        <x-dashboard.sidebar.sidebar />
         {{ $slot }}
     </div>
 </body>

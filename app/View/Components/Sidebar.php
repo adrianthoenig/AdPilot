@@ -21,6 +21,6 @@ class Sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.sidebar');
+        return view('components.dashboard.sidebar.sidebar');
     }
 }

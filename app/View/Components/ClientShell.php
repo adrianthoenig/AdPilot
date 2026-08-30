@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DashboardNavbar extends Component
+class ClientShell extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class DashboardNavbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.navbar.navbar');
+        return view('components.dashboard.clients.shell');
     }
 }

@@ -21,6 +21,6 @@ class ClientCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.client-card');
+        return view('components.dashboard.clients.client-card');
     }
 }

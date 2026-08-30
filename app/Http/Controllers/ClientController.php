@@ -12,8 +12,9 @@ class ClientController extends Controller
 {
     // @desc    Shows all clients available
     // @route   GET /clients
-    public function index() : View {
-        return view('dashboard.clients.index');
+    public function index(Client $client) : View {
+        $clients = Client::all();
+        return view('dashboard.clients.index')->with('clients', $clients);
     }
 
     // @desc    Shows form to create a new client

@@ -21,6 +21,6 @@ class SidebarGroup extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.sidebar-group');
+        return view('components.dashboard.sidebar.sidebar-group');
     }
 }
