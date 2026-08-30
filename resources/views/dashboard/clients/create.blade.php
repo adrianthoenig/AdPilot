@@ -17,7 +17,7 @@
                         label="Industry"
                         required="true"
                         :options="[
-                                'automotive' => 'Automotive',
+                                'automotive' => 'automotive',
                                 'beauty' => 'Beauty',
                                 'construction_real_estate' => 'Construction & Real Estate',
                                 'consulting' => 'Consulting',
@@ -105,7 +105,7 @@
                         name="job_title"
                         label="Job title"
                         :options="[
-                            'ceo' => 'Chief Executive Officer (CEO)',
+                            'ceo' => 'ceo',
                             'founder' => 'Founder',
                             'co-founder' => 'Co-Founder',
                             'owner' => 'Owner',
@@ -179,7 +179,7 @@
                         label="Currency"
                         required="true"
                         :options="[
-                            'USD' => 'US Dollar ($)',
+                            'USD' => 'USD',
                             'EUR' => 'Euro (€)',
                             'GBP' => 'British Pound (£)',
                             'CHF' => 'Swiss Franc (CHF)',
@@ -215,34 +215,34 @@
                     <x-dashboard.forms.form-block gap="2" label="Advertising platforms">
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
-                            id="meta_ads"
+                            id="meta"
                             name="advertising_platforms"
-                            value="meta_ads"
+                            value="meta"
                             title="Meta Ads"
                             icon="fab fa-meta"
                             />
 
                             <x-inputs.radio 
-                            id="google_ads"
+                            id="google"
                             name="advertising_platforms"
-                            value="google_ads"
+                            value="google"
                             title="Google Ads"
                             icon="fab fa-google"
                             />
                         </div>
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
-                            id="tiktok_ads"
+                            id="tiktok"
                             name="advertising_platforms"
-                            value="tiktok_ads"
+                            value="tiktok"
                             title="TikTok Ads"
                             icon="fab fa-tiktok"
                             />
 
                             <x-inputs.radio 
-                            id="linkedin_ads"
+                            id="linkedin"
                             name="advertising_platforms"
-                            value="linkedin_ads"
+                            value="linkedin"
                             title="Linkedin Ads"
                             icon="fab fa-linkedin"
                             />
