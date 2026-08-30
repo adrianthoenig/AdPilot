@@ -44,7 +44,7 @@
 
                         <x-inputs.file 
                         id="logo"
-                        name="logo"
+                        name="logo_path"
                         label="Company Logo"
                         />
 
@@ -158,7 +158,8 @@
                         label="Monthly budget"
                         />
                     </x-dashboard.forms.form-block>
-
+                    
+                    <!-- 
                     <x-dashboard.forms.form-block label="Advertising platforms">
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
@@ -195,6 +196,7 @@
                             />
                         </div>
                     </x-dashboard.forms.form-block>
+                -->
                 </div>
                 <x-dashboard.forms.summary 
                 summaryTitle="Client Summary"

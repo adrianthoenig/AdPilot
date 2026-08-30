@@ -13,6 +13,45 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name');            
+            
+            $table->enum('industry', [
+                'ecommerce',
+                'marketing',
+                'software'
+            ])->nullable();
+
+            $table->string('website')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('logo_path')->nullable();
+
+            $table->string('primary_contact_name');
+            $table->string('email');
+            $table->string('phone')->nullable();
+
+            $table->enum('job_title', [
+                'ceo',
+                'cmo'
+            ]);
+
+            $table->enum('status', [
+                'onboarding',
+                'active',
+                'paused',
+                'draft'
+            ]);
+
+            $table->date('start_date')->nullable();
+            $table->enum('currency', [
+                'eur',
+                'gbp',
+                'usd'
+            ]);
+
+            $table->decimal('monthly_budget', 9, 3)->nullable();
+
             $table->timestamps();
         });
     }
