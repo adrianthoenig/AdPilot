@@ -13,13 +13,14 @@ class Client extends Model
         'country',
         'city',
         'logo_path',
-        'primary_contact_name',
+        'contact_name',
         'email',
         'phone',
         'job_title',
-        'status',
+        'client_status',
         'start_date',
         'currency',
-        'monthly_budget'
+        'monthly_budget',
+        'advertising_platforms'
     ];
 }
