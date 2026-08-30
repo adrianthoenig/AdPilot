@@ -15,9 +15,33 @@
                         id="industry" 
                         name="industry" 
                         label="Industry"
+                        required="true"
                         :options="[
-                                'Ecommerce' => 'Ecommerce',
-                                'Marketing' => 'Marketing'
+                                'automotive' => 'Automotive',
+                                'beauty' => 'Beauty',
+                                'construction_real_estate' => 'Construction & Real Estate',
+                                'consulting' => 'Consulting',
+                                'education' => 'Education',
+                                'ecommerce' => 'Ecommerce',
+                                'fashion' => 'Fashion',
+                                'finance' => 'Finance',
+                                'fitness' => 'Fitness',
+                                'food' => 'Food',
+                                'healthcare' => 'Healthcare',
+                                'home_interior' => 'Home & Interior',
+                                'hospitality_travel' => 'Hospitality & Travel',
+                                'legal_services' => 'Legal Services',
+                                'manufacturing' => 'Manufacturing',
+                                'marketing_advertising' => 'Marketing & Advertising',
+                                'media_entertainment' => 'Media & Entertainment',
+                                'nonprofit' => 'Nonprofit',
+                                'pet_care' => 'Pet Care',
+                                'professional_services' => 'Professional Services',
+                                'restaurants_cafes' => 'Restaurants & Cafes',
+                                'saas_tech' => 'SaaS & Technology',
+                                'sports' => 'Sports',
+                                'telecommunications' => 'Telecommunications',
+                                'other' => 'Other'
                             ]"/>
 
                         <x-inputs.text 
@@ -52,8 +76,8 @@
 
                     <x-dashboard.forms.form-block label="Primary contact">
                         <x-inputs.text
-                        id="primary_contact_name"
-                        name="primary_contact_name"
+                        id="contact_name"
+                        name="contact_name"
                         placeholder="Carlos Higuera"
                         label="Contact name"
                         required="true"
@@ -81,8 +105,19 @@
                         name="job_title"
                         label="Job title"
                         :options="[
-                            'cmo' => 'cmo',
-                            'ceo' => 'ceo'
+                            'ceo' => 'Chief Executive Officer (CEO)',
+                            'founder' => 'Founder',
+                            'co-founder' => 'Co-Founder',
+                            'owner' => 'Owner',
+                            'cmo' => 'Chief Marketing Officer (CMO)',
+                            'marketing_manager' => 'Marketing Manager',
+                            'paid_media_manager' => 'Paid Media Manager',
+                            'social_media_manager' => 'Social Media Manager',
+                            'brand_manager' => 'Brand Manager',
+                            'sales_manager' => 'Sales Manager',
+                            'product_manager' => 'Product Manager (PM)',
+                            'creative_director' => 'Creative Director',
+                            'other' => 'Other'
                         ]"
                         />
                     </x-dashboard.forms.form-block>
@@ -91,7 +126,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="onboarding"
-                            name="status"
+                            name="client_status"
                             value="onboarding"
                             title="Onboarding"
                             icon="fas fa-clipboard"
@@ -100,7 +135,7 @@
 
                             <x-inputs.radio 
                             id="active"
-                            name="status"
+                            name="client_status"
                             value="active"
                             title="Active"
                             icon="fas fa-chart-line"
@@ -111,7 +146,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="paused"
-                            name="status"
+                            name="client_status"
                             value="paused"
                             title="Paused"
                             icon="fas fa-pause"
@@ -120,7 +155,7 @@
 
                             <x-inputs.radio 
                             id="draft"
-                            name="status"
+                            name="client_status"
                             value="draft"
                             title="Draft"
                             icon="fas fa-box"
@@ -144,9 +179,27 @@
                         label="Currency"
                         required="true"
                         :options="[
-                            'eur' => 'eur',
-                            'gbp' => 'gbp',
-                            'usd' => 'usd'
+                            'USD' => 'US Dollar ($)',
+                            'EUR' => 'Euro (€)',
+                            'GBP' => 'British Pound (£)',
+                            'CHF' => 'Swiss Franc (CHF)',
+                            'IRR' => 'Iranian Rial (﷼)',
+                            'CAD' => 'Canadian Dollar (CA$)',
+                            'AUD' => 'Australian Dollar (A$)',
+                            'NZD' => 'New Zealand Dollar (NZ$)',
+                            'JPY' => 'Japanese Yen (¥)',
+                            'CNY' => 'Chinese Yuan (CN¥)',
+                            'INR' => 'Indian Rupee (₹)',
+                            'SGD' => 'Singapore Dollar (S$)',
+                            'HKD' => 'Hong Kong Dollar (HK$)',
+                            'AED' => 'UAE Dirham (AED)',
+                            'SAR' => 'Saudi Riyal (SAR)',
+                            'SEK' => 'Swedish Krona (SEK)',
+                            'NOK' => 'Norwegian Krone (NOK)',
+                            'DKK' => 'Danish Krone (DKK)',
+                            'MXN' => 'Mexican Peso (MX$)',
+                            'BRL' => 'Brazilian Real (R$)',
+                            'PLN' => 'Polish Złoty (zł)'
                         ]"
                         />
 
@@ -163,7 +216,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="meta_ads"
-                            name="platforms"
+                            name="advertising_platforms"
                             value="meta_ads"
                             title="Meta Ads"
                             icon="fab fa-meta"
@@ -171,7 +224,7 @@
 
                             <x-inputs.radio 
                             id="google_ads"
-                            name="platforms"
+                            name="advertising_platforms"
                             value="google_ads"
                             title="Google Ads"
                             icon="fab fa-google"
@@ -180,7 +233,7 @@
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
                             id="tiktok_ads"
-                            name="platforms"
+                            name="advertising_platforms"
                             value="tiktok_ads"
                             title="TikTok Ads"
                             icon="fab fa-tiktok"
@@ -188,7 +241,7 @@
 
                             <x-inputs.radio 
                             id="linkedin_ads"
-                            name="platforms"
+                            name="advertising_platforms"
                             value="linkedin_ads"
                             title="Linkedin Ads"
                             icon="fab fa-linkedin"
