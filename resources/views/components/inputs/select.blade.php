@@ -14,7 +14,7 @@
     <select id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
         class="px-2 py-4 rounded-lg border border-gray-300 focus:outline-none" {{ $required ? 'required' : '' }}>
         @foreach($options as $id => $value)
-            <option id="{{ $id }}">{{ $value }}</option>
+            <option id="{{ $id }}" value="{{ $id }}">{{ $value }}</option>
         @endforeach
     </select>
 </div>

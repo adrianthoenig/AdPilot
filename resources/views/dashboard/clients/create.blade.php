@@ -17,7 +17,7 @@
                         label="Industry"
                         required="true"
                         :options="[
-                                'automotive' => 'automotive',
+                                'automotive' => 'Automotive',
                                 'beauty' => 'Beauty',
                                 'construction_real_estate' => 'Construction & Real Estate',
                                 'consulting' => 'Consulting',
@@ -105,7 +105,7 @@
                         name="job_title"
                         label="Job title"
                         :options="[
-                            'ceo' => 'ceo',
+                            'ceo' => 'Chief Executive Officer (CEO)',
                             'founder' => 'Founder',
                             'co-founder' => 'Co-Founder',
                             'owner' => 'Owner',
@@ -179,7 +179,7 @@
                         label="Currency"
                         required="true"
                         :options="[
-                            'USD' => 'USD',
+                            'USD' => 'US Dollar ($)',
                             'EUR' => 'Euro (€)',
                             'GBP' => 'British Pound (£)',
                             'CHF' => 'Swiss Franc (CHF)',
