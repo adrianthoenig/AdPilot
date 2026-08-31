@@ -35,7 +35,7 @@ class ClientController extends Controller
             'website' => 'nullable|url',
             'country' => 'nullable|string|max:200',
             'city' => 'nullable|string|max:200',
-            'logo_path' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp',
+            'logo_path' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:2048',
             'contact_name' => 'required|string|max:256',
             'email' => 'required|email|max:300',
             'phone' => 'nullable|string',
@@ -46,8 +46,15 @@ class ClientController extends Controller
             'monthly_budget' => 'nullable|numeric|min:0',
             'advertising_platforms' => 'nullable'
         ], [
-            'logo_path.image' => 'You have to choose an image!'
+            'logo_path.image' => 'The company logo must be an image',
+            'logo_path.mimes' => 'The company logo must be a file of type: jpeg, jpg, png, webp or gif',
+            'logo_path.max' => 'The company logo must be maximum 2MB'
         ]);
+
+        if($request->has('logo_path')) {
+            $path = $request->file('logo_path')->store('logos', 'public');
+            $validatedData['logo_path'] = $path;
+        }
 
         Client::create($validatedData);
         return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully created')->with('success', 'Client created successfully');

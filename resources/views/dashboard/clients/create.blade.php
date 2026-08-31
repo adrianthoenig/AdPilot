@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-dashboard.main title="Add new client">
-            <form action="/dashboard/clients/" method="POST" class="flex items-start gap-6">
+            <form action="/dashboard/clients/" method="POST" class="flex items-start gap-6" enctype="multipart/form-data">
                 @csrf
                 <div class="bg-white flex-1 p-6 rounded-3xl flex flex-col gap-8">
                     <x-dashboard.forms.form-block label="Company information">
