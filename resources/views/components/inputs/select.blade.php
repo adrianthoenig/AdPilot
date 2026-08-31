@@ -22,4 +22,3 @@
     <p class="text-sm text-red-500">{{ $message }}</p>
     @enderror
 </div>
-<h1>{{ old($name) }}</h1>
