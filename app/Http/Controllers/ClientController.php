@@ -45,6 +45,8 @@ class ClientController extends Controller
             'currency' => 'required',
             'monthly_budget' => 'nullable|numeric|min:0',
             'advertising_platforms' => 'nullable'
+        ], [
+            'logo_path.image' => 'You have to choose an image!'
         ]);
 
         Client::create($validatedData);
