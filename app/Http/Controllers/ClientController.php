@@ -14,7 +14,7 @@ class ClientController extends Controller
     // @route   GET /clients
     public function index(Client $client): View
     {
-        $clients = Client::all();
+        $clients = Client::latest();
         return view('dashboard.clients.index')->with('clients', $clients);
     }
 
