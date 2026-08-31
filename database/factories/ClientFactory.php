@@ -49,7 +49,7 @@ class ClientFactory extends Factory
             'website' => fake()->url(),
             'country' => fake()->country(),
             'city' => fake()->city(),
-            'logo_path' => fake()->image(width: 12, height: 12, category: 'business'),
+            'logo_path' => fake()->imageUrl(48, 48, 'business', true, 'logo', false, 'png'),
             'contact_name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),

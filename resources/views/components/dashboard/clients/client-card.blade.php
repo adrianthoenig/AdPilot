@@ -16,7 +16,7 @@
     </div>
     <div class="flex items-center gap-4 flex-1">
         @if($client->logo_path)
-        <img src="/storage/{{ $client->logo_path }}" alt="{{ $client->name }}" class="h-12 w-12 rounded-lg">
+        <img src="{{ $client->logo_path }}" alt="{{ $client->name }}" class="h-12 w-12 rounded-lg">
         @endif
         <div class="flex-1 flex flex-col gap-1">
             <h2 class="text-2xl">{{ $client->name  }}</h2>
