@@ -125,7 +125,7 @@
                     
                     <x-dashboard.forms.form-block
                     gap="2" label="Client status" type="radio"
-                    error="@error('client_status') 'error' @enderror"
+                    radioName="client_status"
                     >
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
@@ -216,6 +216,7 @@
                         />
                     </x-dashboard.forms.form-block>
                     <x-dashboard.forms.form-block 
+                        radioName="advertising_platforms"
                         gap="2" label="Advertising platforms">
                         <div class="flex items-center gap-6">
                             <x-inputs.radio 
