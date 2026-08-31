@@ -40,7 +40,7 @@ class ClientController extends Controller
             'email' => 'required|email|max:300',
             'phone' => 'nullable|string',
             'job_title' => 'nullable',
-            'client_status' => 'required',
+            'client_status' => 'required|in:onboarding,active,paused,draft',
             'start_date' => 'nullable',
             'currency' => 'required',
             'monthly_budget' => 'nullable|numeric|min:0',

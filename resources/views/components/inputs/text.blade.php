@@ -17,7 +17,7 @@
         id="{{ $id }}" 
         name="{{ $name }}" 
         placeholder="{{ $placeholder }}" 
-        value="{{ $value }}"
+        value="{{ old($name) ? old($name) : $value }}"
         class="px-2 py-4 rounded-lg border border-gray-300 focus:outline-none @error($name) border-2 border-red-500 @enderror"
         {{ $required ? 'required' : '' }}
     />

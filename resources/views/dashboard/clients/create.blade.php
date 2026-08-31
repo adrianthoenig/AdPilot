@@ -9,7 +9,8 @@
                         name="name" 
                         placeholder="MogulZ Media" 
                         label="Company Name" 
-                        required="true" />
+                        required="true" 
+                        />
 
                         <x-inputs.select 
                         id="industry" 

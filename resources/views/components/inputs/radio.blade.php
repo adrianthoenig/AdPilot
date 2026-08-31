@@ -2,7 +2,6 @@
     'id' => '',
     'name' => '',
     'value' => '',
-    'checked' => false,
     'title' => '',
     'icon' => null,
     'message' => null
@@ -11,7 +10,9 @@
 
 
 <label for="{{ $id }}" class="w-full">
-    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}" {{ $checked ? 'checked' : '' }} class="peer appearance-none">
+    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
+    {{ old($name) == $id ? 'checked' : '' }}
+    class="peer appearance-none">
     <div
         class="cursor-pointer p-3 flex flex-col gap-2 bg-gray-100 peer-checked:bg-gray-200 peer-checked:outline peer-checked:outline-gray-700 hover:bg-gray-200 rounded-lg">
         <div class="flex gap-2 items-center">
