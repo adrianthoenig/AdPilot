@@ -38,7 +38,7 @@
                 <i class="fas fa-coins"></i>
                 <p class="text-lg font-light">Monthly budget</p>
             </div>
-            <h3 class="text-2xl">{{ $client->monthly_budget }}{{ $client->currency }}</h3>
+            <h3 class="text-2xl">{{ formatCurrency($client->monthly_budget, $client->currency) }}</h3>
         </div>
     </div>
 
