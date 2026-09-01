@@ -56,7 +56,10 @@ class ClientController extends Controller
         if($request->has('logo_path')) {
             $path = $request->file('logo_path')->store('logos', 'public');
             $validatedData['logo_path'] = $path;
+        } else {
+            $validatedData['logo_path'] = 'logos/default.jpg';
         }
+        
 
         Client::create($validatedData);
         return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully created')->with('success', 'Client created successfully');
