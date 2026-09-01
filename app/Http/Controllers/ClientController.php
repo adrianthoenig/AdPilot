@@ -12,9 +12,9 @@ class ClientController extends Controller
 {
     // @desc    Shows all clients available
     // @route   GET /clients
-    public function index(Client $client): View
+    public function index(): View
     {
-        $clients = Client::latest();
+        $clients = Client::latest()->get();
         return view('dashboard.clients.index')->with('clients', $clients);
     }
 
