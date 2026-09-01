@@ -8,6 +8,8 @@ use Illuminate\View\View;
 
 use App\Models\Client;
 
+use Illuminate\Support\Number;
+
 class ClientController extends Controller
 {
     // @desc    Shows all clients available
