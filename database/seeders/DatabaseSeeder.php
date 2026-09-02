@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // Seed Clients
         DB::table('clients')->truncate();
-        $this->call(RandomClientSeeder::class); // fake clients
         $this->call(ClientSeeder::class); // speciifc client
+        $this->call(RandomClientSeeder::class); // fake clients
     }
 }
