@@ -9,7 +9,7 @@
         <x-dashboard.chips.status-chip status="{{ ucfirst($client->client_status) }}" />
 
         <div class="flex items-center gap-2">
-            <x-action-button url="/dashboard" icon="eye" />
+            <x-action-button url="{{ route('dashboard.clients.show', $client->id) }}" icon="eye" />
             <x-action-button url="/dashboard" icon="pencil" />
             <x-action-button url="/dashboard" icon="trash" />
         </div>

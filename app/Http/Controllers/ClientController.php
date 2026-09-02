@@ -66,6 +66,6 @@ class ClientController extends Controller
     }
 
     public function show(Client $client) : View {
-        return view('dashboard.clients.show');
+        return view('dashboard.clients.show')->with('client', $client);
     }
 }
