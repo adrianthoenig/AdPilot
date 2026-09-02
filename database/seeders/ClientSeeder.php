@@ -12,9 +12,9 @@ class ClientSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): Client
+    public function run(): void
     {
-        $client = Client::create([
+        Client::create([
             'name' => 'Ecom Growth Partners',
             'industry' => 'marketing_advertising',
             'website' => 'https://www.ecomgrowthpartners.com/',
@@ -30,7 +30,5 @@ class ClientSeeder extends Seeder
             'monthly_budget' => 40.000,
             'advertising_platforms' => 'meta'
         ]);
-
-        return $client;
     }
 }
