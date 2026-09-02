@@ -6,7 +6,7 @@
 <div class="bg-white p-6 rounded-xl flex flex-col gap-6">
     <div class="flex justify-between items-center">
         {{-- Chip (component) --}}
-        <x-dashboard.chips.status-chip status="{{ ucfirst($client->client_status) }}" />
+        <x-dashboard.chips.status-chip status="{{ $client->client_status }}" />
 
         <div class="flex items-center gap-2">
             <x-action-button url="{{ route('dashboard.clients.show', $client->id) }}" icon="eye" />
