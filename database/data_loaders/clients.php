@@ -67,4 +67,20 @@ return [
         'monthly_budget' => 150.000,
         'advertising_platforms' => 'meta'
     ],
+    [
+        'name' => 'Paria Janum',
+        'industry' => 'beauty',
+        'website' => 'https://para-janum.love',
+        'country' => 'Iran',
+        'city' => 'Sabzevar',
+        'logo_path' => 'logos/paria-janum.png',
+        'contact_name' => 'Paria Mehri',
+        'email' => 'pari@cloud.com',
+        'job_title' => 'founder',
+        'client_status' => 'active',
+        'start_date' => Carbon::now(),
+        'currency' => 'IRR',
+        'monthly_budget' => 6_000_000,
+        'advertising_platforms' => 'tiktok'
+    ]
 ];
