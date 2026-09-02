@@ -44,5 +44,5 @@
 
     <div class="h-[0.72px] w-full bg-gray-700"></div>
 
-    <p class="text-lg font-light text-gray-400">Joined {{ $client->created_at }}</p>
+    <p class="text-lg font-light text-gray-400">Joined {{ friendlyDateFormat($client->created_at) }}</p>
 </div>

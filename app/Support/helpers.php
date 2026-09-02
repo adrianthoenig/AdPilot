@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 if (!function_exists('formatCurrency')) {
 
     function formatCurrency(string $monthly_budget = '0.00', string $currencyCode = 'EUR'): string
@@ -103,6 +105,14 @@ if (!function_exists('formatCurrency')) {
 
 if(!function_exists('friendlyDateFormat')) {
     function friendlyDateFormat(string $date) : string {
-        return '';
+        $fields = ['year', 'month', 'day'];
+        $formatted = array_combine($fields, explode('-', $date));
+
+        // Change values to integers
+        $formatted = array_map(fn($date) => (int) $date, $formatted);
+        $dt = Carbon::createFromDate(...$formatted);
+
+        // Create date obj
+        return $dt->toFormattedDateString();
     }
 }
