@@ -100,3 +100,9 @@ if (!function_exists('formatCurrency')) {
         return "{$monthly_budget}{$symbols[$currencyCode]['symbol']}";
     }
 }
+
+if(!function_exists('friendlyDateFormat')) {
+    function friendlyDateFormat(string $date) : string {
+        return '';
+    }
+}
