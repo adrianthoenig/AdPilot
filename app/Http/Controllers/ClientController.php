@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,29 +30,9 @@ class ClientController extends Controller
 
     // @desc    Stores new created client
     // @route   POST /dashboard/clients
-    public function store(Request $request): RedirectResponse
+    public function store(ClientRequest $request): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:256',
-            'industry' => 'required',
-            'website' => 'nullable|url',
-            'country' => 'nullable|string|max:200',
-            'city' => 'nullable|string|max:200',
-            'logo_path' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:2048',
-            'contact_name' => 'required|string|max:256',
-            'email' => 'required|email|max:300',
-            'phone' => 'nullable|string',
-            'job_title' => 'nullable',
-            'client_status' => 'required|in:onboarding,active,paused,draft',
-            'start_date' => 'nullable',
-            'currency' => 'required',
-            'monthly_budget' => 'nullable|numeric|min:0',
-            'advertising_platforms' => 'nullable'
-        ], [
-            'logo_path.image' => 'The company logo must be an image',
-            'logo_path.mimes' => 'The company logo must be a file of type: jpeg, jpg, png, webp or gif',
-            'logo_path.max' => 'The company logo must be maximum 2MB'
-        ]);
+        $validatedData = $request->validated();
 
         if($request->has('logo_path')) {
             $path = $request->file('logo_path')->store('logos', 'public');
