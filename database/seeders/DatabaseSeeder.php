@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Client;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\ClientSeeder;
+use Database\Seeders\RandomClientSeeder;
 use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         // Seed fake clients
         DB::table('clients')->truncate();
-        $this->call(ClientSeeder::class);
+        $this->call(RandomClientSeeder::class);
     }
 }
