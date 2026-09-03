@@ -256,6 +256,7 @@
                 </div>
                 <x-dashboard.forms.summary 
                 summaryTitle="Client Summary"
+                publishTitle="Create Client"
                 />
             </form>
         </div>
