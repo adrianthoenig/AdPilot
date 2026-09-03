@@ -5,6 +5,8 @@
     'fields' => []
 ])
 
+@vite('resources/js/modules/clientSummary.js');
+
 <div class="bg-white p-6 rounded-xl flex flex-col gap-6 sticky top-4">
     <div class="p-6 rounded-xl bg-gray-100 flex flex-col gap-6">
         <h4 class="text-xl">{{ $summaryTitle }}</h4>
