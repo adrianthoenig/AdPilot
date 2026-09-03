@@ -3,8 +3,13 @@
 // DOM Elements
 const companyName = document.getElementById('company-name-value');
 const clientStatus = document.getElementById('client-status-value');
+
 const totalFields = document.getElementById('total-fields-value');
+const totalFieldsFilled = document.getElementById('total-fields-filled');
+
 const requiredFields = document.getElementById('required-fields-value');
+const requiredFieldsFilled = document.getElementById('required-fields-filled');
+
 const formStatus = document.getElementById('status-value');
 
 // Form
@@ -21,17 +26,36 @@ function countTotalFields() {
 
     let sum = 0;
 
-    // Count inputs
-    createForm.querySelectorAll('input').forEach(input => {
-        if(input.type !== 'hidden' && input.type !== 'submit' && input.type !== 'radio') sum++;
-    })
-
-    // Count selects
+    // Including inputs
+    sum += createForm.querySelectorAll('input').length;
     sum += createForm.querySelectorAll('select').length;
-
-    // Count radio buttons
+    
+    // Excluding inputs
+    sum -= createForm.querySelectorAll('input[type="hidden"]').length;
+    sum -= createForm.querySelectorAll('input[type="submit"]').length;
 
     return sum;
+}
+
+function updateTotalFields() {
+    if(!createForm) return;
+
+    const exludedTypes = [
+        'hidden',
+        'radio'
+    ];
+
+    let filled = 0;
+
+    createForm.querySelectorAll('input').forEach(el => {
+        const inputField = el.closest('input');
+
+        if(!exludedTypes.includes(inputField.type)) {
+            if(inputField.value) filled++;
+        }
+    })
+
+    return filled;
 }
 
 // Count required fields
@@ -51,10 +75,14 @@ function countRequiredFields() {
 // Init summary
 function initSummary() {
     // Change total fields
+    totalFieldsFilled.textContent = updateTotalFields();
     totalFields.textContent = countTotalFields();
 
     // Change required fields
     requiredFields.textContent = countRequiredFields();
+
+    // Change client creation status
+    formStatus.textContent = 'Pending';
 }
 
 initSummary();
@@ -71,4 +99,7 @@ createForm.addEventListener('input', (e) => {
     if(input.name === 'client_status') {
         clientStatus.textContent = capitalize(input.value);
     }
+
+    // Check to add total field fille
+    totalFieldsFilled.textContent = updateTotalFields();
 })
