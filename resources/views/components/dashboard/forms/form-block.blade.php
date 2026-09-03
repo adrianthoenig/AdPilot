@@ -6,7 +6,7 @@
 ])
 
 <div
-    class="p-6 flex flex-col gap-{{ $gap }} border rounded-xl border-gray-300 @error($radioName) border-2 border-red-500 @enderror">
+    class="form__block p-6 flex flex-col gap-{{ $gap }} border rounded-xl border-gray-300 @error($radioName) border-2 border-red-500 @enderror">
     @if($label)
         <h3 class="text-xl">{{ $label }}</h3>
     @endif

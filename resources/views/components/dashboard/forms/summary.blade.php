@@ -15,31 +15,31 @@
             {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Company name</p>
-                <p>Value</p>
+                <p id="company-name-value">Value</p>
             </div>
 
             {{-- Client Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Client status</p>
-                <p>Onboarding</p>
+                <p id="client-status-value">Onboarding</p>
             </div>
 
             {{-- Total fields (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Total fields</p>
-                <p>13 / 13</p>
+                <p><span class="total-fields-filled">0</span> / <span class="total-fields-value">13</span></p>
             </div>
 
             {{-- Required (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Required fields</p>
-                <p>4/4</p>
+                <p id="required-fields-value">4/4</p>
             </div>
 
             {{-- Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Status</p>
-                <p>Ready</p>
+                <p id="status-value">Ready</p>
             </div>
         </div>
     </div>

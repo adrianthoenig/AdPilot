@@ -13,7 +13,7 @@
         type="file" 
         id="{{ $id }}" 
         name="{{ $name }}" 
-        class="px-2 py-4 rounded-lg border border-gray-300 focus:outline-none @error($name) border-2 border-red-500 @enderror"
+        class="form__input px-2 py-4 rounded-lg border border-gray-300 focus:outline-none @error($name) border-2 border-red-500 @enderror"
         {{ $required ? 'required' : '' }}
     />
 </div>
