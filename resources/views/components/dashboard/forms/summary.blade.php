@@ -5,18 +5,42 @@
     'fields' => []
 ])
 
-@vite('resources/js/modules/clientSummary.js');
+@vite('resources/js/modules/clientSummary.js')
 
 <div class="bg-white p-6 rounded-xl flex flex-col gap-6 sticky top-4">
     <div class="p-6 rounded-xl bg-gray-100 flex flex-col gap-6">
         <h4 class="text-xl">{{ $summaryTitle }}</h4>
         <div class="flex flex-col gap-4">
-            @foreach($fields as $name => $value)
+
+            {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
-                <p class="text-gray-600">{{ $name }}</p>
-                <p>{{ $value }}</p>
+                <p class="text-gray-600">Company name</p>
+                <p>Value</p>
             </div>
-            @endforeach
+
+            {{-- Client Status --}}
+            <div class="flex items-center justify-between gap-25">
+                <p class="text-gray-600">Client status</p>
+                <p>Onboarding</p>
+            </div>
+
+            {{-- Total fields (DYNAMIC) --}}
+            <div class="flex items-center justify-between gap-25">
+                <p class="text-gray-600">Total fields</p>
+                <p>13 / 13</p>
+            </div>
+
+            {{-- Required (DYNAMIC) --}}
+            <div class="flex items-center justify-between gap-25">
+                <p class="text-gray-600">Required fields</p>
+                <p>4/4</p>
+            </div>
+
+            {{-- Status --}}
+            <div class="flex items-center justify-between gap-25">
+                <p class="text-gray-600">Status</p>
+                <p>Ready</p>
+            </div>
         </div>
     </div>
     <div class="p-6 rounded-xl bg-gray-100 flex flex-col gap-6">

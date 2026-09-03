@@ -256,13 +256,6 @@
                 </div>
                 <x-dashboard.forms.summary 
                 summaryTitle="Client Summary"
-                :fields="[
-                    'Company name' => 'MogulZ Media',
-                    'Client status' => 'Onboarding',
-                    'Total fields' => 13,
-                    'Required' => '4/4',
-                    'Status' => 'Ready'
-                ]"
                 />
             </form>
         </div>
