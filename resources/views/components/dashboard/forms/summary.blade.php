@@ -39,7 +39,7 @@
             {{-- Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Status</p>
-                <p id="status-value"><span class="text-red-500">Not ready</span></p>
+                <p id="status-value"><span class="text-red-500 animate-pulse">Not ready</span></p>
             </div>
         </div>
     </div>

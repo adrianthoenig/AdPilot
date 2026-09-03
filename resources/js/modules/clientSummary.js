@@ -15,6 +15,10 @@ const formStatus = document.getElementById('status-value');
 // Form
 const createForm = document.getElementById('create-client-form');
 
+// Global constants
+const extraRequiredFields = 1;
+const exludedTotalFields = 6;
+
 // Capitalize string
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -34,7 +38,7 @@ function countTotalFields() {
     sum -= createForm.querySelectorAll('input[type="hidden"]').length;
     sum -= createForm.querySelectorAll('input[type="submit"]').length;
 
-    return sum;
+    return sum - exludedTotalFields;
 }
 
 function updateTotalFields() {
@@ -67,7 +71,7 @@ function countRequiredFields() {
     sum += createForm.querySelectorAll('input[required]').length;
     sum += createForm.querySelectorAll('select[required]').length;
 
-    return sum;
+    return sum + extraRequiredFields;
 }
 
 function updateRequiredFields() {
@@ -111,5 +115,28 @@ createForm.addEventListener('input', (e) => {
 
     // Check to add total field fille
     totalFieldsFilled.textContent = updateTotalFields();
-    requiredFieldsFilled.textContent = updateRequiredFields();
+    
+    const requiredFieldsCount = updateRequiredFields();
+    requiredFieldsFilled.textContent = requiredFieldsCount;
+
+    // Check if form is ready
+    if(true) {
+        // Change number to green
+        requiredFieldsFilled.className = 'text-green-500';
+
+        // Change form status to ready
+        formStatus.className = 'text-green-500 animate-pulse';
+        formStatus.textContent = 'Ready';
+    }
+
+    // Reset if user deletes inputs
+    if(false) {
+        // Reset all to defualts
+        requiredFieldsFilled.className = 'text-red-500';
+
+        // Reset form status
+        formStatus.className = 'text-red-500 animate-pulse';
+        formStatus.textContent = 'Not Ready';
+    }
+
 })
