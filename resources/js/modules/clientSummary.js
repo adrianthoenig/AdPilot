@@ -70,6 +70,18 @@ function countRequiredFields() {
     return sum;
 }
 
+function updateRequiredFields() {
+    if(!createForm) return;
+
+    let filled = 0;
+
+    createForm.querySelectorAll('input[required]').forEach(el => {
+        if(el.value) filled++;
+    });
+
+    return filled;
+}
+
 // Should give 5
 
 // Init summary
@@ -80,9 +92,6 @@ function initSummary() {
 
     // Change required fields
     requiredFields.textContent = countRequiredFields();
-
-    // Change client creation status
-    formStatus.textContent = 'Pending';
 }
 
 initSummary();
@@ -102,4 +111,5 @@ createForm.addEventListener('input', (e) => {
 
     // Check to add total field fille
     totalFieldsFilled.textContent = updateTotalFields();
+    requiredFieldsFilled.textContent = updateRequiredFields();
 })

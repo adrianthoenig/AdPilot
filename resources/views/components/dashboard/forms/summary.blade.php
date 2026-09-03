@@ -15,13 +15,13 @@
             {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Company name</p>
-                <p id="company-name-value">Value</p>
+                <p id="company-name-value"><span class="text-gray-400 animate-pulse">Pending</span></p>
             </div>
 
             {{-- Client Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Client status</p>
-                <p id="client-status-value">Onboarding</p>
+                <p id="client-status-value"><span class="text-gray-400 animate-pulse">Pending</span></p>
             </div>
 
             {{-- Total fields (DYNAMIC) --}}
@@ -33,13 +33,13 @@
             {{-- Required (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Required fields</p>
-                <p><span id="required-fields-filled">0</span> / <span id="required-fields-value">4</span></p>
+                <p><span id="required-fields-filled" class="text-red-500">0</span> / <span id="required-fields-value">4</span></p>
             </div>
 
             {{-- Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Status</p>
-                <p id="status-value">Ready</p>
+                <p id="status-value"><span class="text-red-500">Not ready</span></p>
             </div>
         </div>
     </div>
