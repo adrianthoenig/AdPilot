@@ -27,13 +27,13 @@
             {{-- Total fields (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Total fields</p>
-                <p><span class="total-fields-filled">0</span> / <span class="total-fields-value">13</span></p>
+                <p><span id="total-fields-filled">0</span> / <span id="total-fields-value">13</span></p>
             </div>
 
             {{-- Required (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600">Required fields</p>
-                <p id="required-fields-value">4/4</p>
+                <p><span id="required-fields-filled">0</span> / <span id="required-fields-value">4</span></p>
             </div>
 
             {{-- Status --}}

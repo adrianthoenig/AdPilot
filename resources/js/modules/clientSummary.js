@@ -31,9 +31,33 @@ function countTotalFields() {
 
     // Count radio buttons
 
+    return sum;
+}
+
+// Count required fields
+function countRequiredFields() {
+    if(!createForm) return;
+
+    let sum = 0;
+
+    sum += createForm.querySelectorAll('input[required]').length;
+    sum += createForm.querySelectorAll('select[required]').length;
 
     return sum;
 }
+
+// Should give 5
+
+// Init summary
+function initSummary() {
+    // Change total fields
+    totalFields.textContent = countTotalFields();
+
+    // Change required fields
+    requiredFields.textContent = countRequiredFields();
+}
+
+initSummary();
 
 createForm.addEventListener('input', (e) => {
     const input = e.target;
