@@ -34,7 +34,7 @@
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Total fields</p>
                 <p>
-                    <span id="total-fields-filled" class="text-ellipsis">0</span> / <span id="total-fields-value">13</span>
+                    <span id="total-fields-fill" class="text-ellipsis">0</span> / <span id="total-fields-max">13</span>
                 </p>
             </div>
 
@@ -42,7 +42,7 @@
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Required fields</p>
                 <p>
-                    <span id="required-fields-filled" class="text-red-500">0</span> / <span id="required-fields-value">4</span>
+                    <span id="required-fields-fill" class="text-red-500">0</span> / <span id="required-fields-max">4</span>
                 </p>
             </div>
 
