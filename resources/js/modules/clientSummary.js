@@ -13,6 +13,8 @@ const totalFieldsFilled = document.getElementById('total-fields-fill');
 const totalRequiredMax = document.getElementById('required-fields-max');
 const totalRequiredFilled = document.getElementById('required-fields-fill');
 
+const companyName = document.getElementById('company-name-value');
+
 // Exluded input types
 const excludedTypes = [
     'hidden',
@@ -92,11 +94,20 @@ function getRequiredFilledCount() {
         .length;
 }
 
+// Get company name
+function getCompanyName() {
+    if(!clientForm) return;
+    return document.getElementById('name').value;
+}
+
 // Update summary
 function updateSummary() {
     // Update total and required fields
     totalFieldsFilled.textContent = getFilledCount();
     totalRequiredFilled.textContent = getRequiredFilledCount();
+
+    // Update company name
+    companyName.textContent = getCompanyName();
 
 }
 
