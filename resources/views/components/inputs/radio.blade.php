@@ -4,13 +4,14 @@
     'value' => '',
     'title' => '',
     'icon' => null,
-    'message' => null
+    'message' => null,
+    'required' => false
 ])
 
 
 
 <label for="{{ $id }}" class="w-full">
-    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
+    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}" {{ $required ? 'required' : '' }}
     {{ old($name) == $id ? 'checked' : '' }}
     class="peer appearance-none">
     <div

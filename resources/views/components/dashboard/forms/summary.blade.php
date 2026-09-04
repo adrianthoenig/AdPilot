@@ -15,31 +15,43 @@
             {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Company name</p>
-                <p id="company-name-value" class="text-ellipsis"><span class="text-gray-400 animate-pulse">Pending</span></p>
+                <p id="company-name-value" class="text-ellipsis">
+                    <span class="text-gray-400 animate-pulse">
+                        Pending
+                    </span>
+                </p>
             </div>
 
             {{-- Client Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Client status</p>
-                <p id="client-status-value" class="text-ellipsis"><span class="text-gray-400 animate-pulse">Pending</span></p>
+                <p id="client-status-value" class="text-ellipsis">
+                    <span class="text-gray-400 animate-pulse">Pending</span>
+                </p>
             </div>
 
             {{-- Total fields (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Total fields</p>
-                <p><span id="total-fields-filled" class="text-ellipsis">0</span> / <span id="total-fields-value">13</span></p>
+                <p>
+                    <span id="total-fields-filled" class="text-ellipsis">0</span> / <span id="total-fields-value">13</span>
+                </p>
             </div>
 
             {{-- Required (DYNAMIC) --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Required fields</p>
-                <p><span id="required-fields-filled" class="text-red-500">0</span> / <span id="required-fields-value">4</span></p>
+                <p>
+                    <span id="required-fields-filled" class="text-red-500">0</span> / <span id="required-fields-value">4</span>
+                </p>
             </div>
 
             {{-- Status --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Status</p>
-                <p id="status-value"><span class="text-red-500 animate-pulse">Not ready</span></p>
+                <p id="status-value">
+                    <span class="text-red-500 animate-pulse">Not ready</span>
+                </p>
             </div>
         </div>
     </div>

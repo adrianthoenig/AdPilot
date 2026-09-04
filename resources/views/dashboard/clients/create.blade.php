@@ -16,7 +16,6 @@
                         id="industry" 
                         name="industry" 
                         label="Industry"
-                        required="true"
                         :options="[
                                 'automotive' => 'Automotive',
                                 'beauty' => 'Beauty',
@@ -135,6 +134,7 @@
                             title="Onboarding"
                             icon="fas fa-clipboard"
                             message="Your client is still in the onboarding phase."
+                            required="true"
                             />
 
                             <x-inputs.radio 
