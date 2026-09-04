@@ -15,7 +15,7 @@
             {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Company name</p>
-                <p id="company-name-value" class=" whitespace-nowrap overflow-x-scroll">
+                <p id="company-name-value" class="text-ellipsis overflow-x-hidden whitespace-nowrap">
                     <span class="text-gray-400 animate-pulse">
                         Pending
                     </span>
