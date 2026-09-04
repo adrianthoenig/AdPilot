@@ -10,12 +10,12 @@
 <div class="bg-white p-6 rounded-xl flex flex-col gap-6 sticky top-4 overflow-hidden">
     <div class="p-6 rounded-xl bg-gray-100 flex flex-col gap-6">
         <h4 class="text-xl">{{ $summaryTitle }}</h4>
-        <div class="flex flex-col gap-4 w-80 text-ellipsis overflow-hidden">
+        <div class="flex flex-col gap-4 w-90 text-ellipsis overflow-hidden">
 
             {{-- Company name --}}
             <div class="flex items-center justify-between gap-25">
                 <p class="text-gray-600 whitespace-nowrap">Company name</p>
-                <p id="company-name-value" class="text-ellipsis whitespace-nowrap">
+                <p id="company-name-value" class=" whitespace-nowrap overflow-x-scroll">
                     <span class="text-gray-400 animate-pulse">
                         Pending
                     </span>
