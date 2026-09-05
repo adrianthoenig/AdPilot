@@ -100,6 +100,25 @@ function getCompanyName() {
     return document.getElementById('name').value;
 }
 
+// Update company name
+function updateCompanyName() {
+    if(!clientForm) return;
+    let companyNameValue = getCompanyName();
+
+    if(!companyNameValue) {    
+        // Create 'pending' span element
+        const span = document.createElement('span');
+        span.className = 'text-gray-400 animate-pulse';
+        span.textContent = 'Pending';
+
+        // Appending span element
+        companyName.textContent = '';
+        companyName.append(span);
+        return;
+    }
+    companyName.textContent = companyNameValue;
+}
+
 // Update summary
 function updateSummary() {
     // Update total and required fields
@@ -107,7 +126,7 @@ function updateSummary() {
     totalRequiredFilled.textContent = getRequiredFilledCount();
 
     // Update company name
-    companyName.textContent = getCompanyName();
+    updateCompanyName();
 
 }
 
