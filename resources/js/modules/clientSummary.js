@@ -79,10 +79,18 @@ function setMaxFields() {
 
 // Get fields filled count
 function getFilledCount() {
-    return [...inputs]
+    const inputCount = [...inputs]
         .filter(input => !excludedTypes.includes(input.type))
         .filter(input => input.value !== '')
         .length;
+
+    const selectCount = [...selects]
+        .filter(select => !select.hasAttribute('disabled'))
+        .filter(select => select.hasAttribute('selected'))
+        .length;
+
+    return inputCount + selectCount;
+
 }
 
 // Get required fields filled count
