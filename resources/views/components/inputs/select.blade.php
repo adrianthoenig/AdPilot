@@ -4,7 +4,8 @@
     'value' => '',
     'label' => null,
     'required' => false,
-    'options' => []
+    'options' => [],
+    'default' => null
 ])
 
 <div class="flex flex-col gap-2">
@@ -14,6 +15,9 @@
     <select id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
         class="form__input px-2 py-4 rounded-lg border border-gray-300 focus:outline-none @error($name) border-2 border-red-500 @enderror" 
         {{ $required ? 'required' : '' }}>
+        @if($default)
+            <option disabled selected value="default" id="default">{{ $default }}</option>
+        @endif
         @foreach($options as $id => $value)
             <option {{ old($name) == $id ? 'selected' : '' }} id="{{ $id }}" value="{{ $id }}">{{ $value }}</option>
         @endforeach

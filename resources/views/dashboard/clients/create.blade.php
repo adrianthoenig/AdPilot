@@ -16,6 +16,7 @@
                         id="industry" 
                         name="industry" 
                         label="Industry"
+                        default="Select your clients industry"
                         :options="[
                                 'automotive' => 'Automotive',
                                 'beauty' => 'Beauty',
@@ -104,6 +105,7 @@
                         id="job_title"
                         name="job_title"
                         label="Job title"
+                        default="Select a job title"
                         :options="[
                             'ceo' => 'Chief Executive Officer (CEO)',
                             'founder' => 'Founder',
@@ -182,6 +184,7 @@
                         name="currency"
                         label="Currency"
                         required="true"
+                        default="Select a currency"
                         :options="[
                             'USD' => 'US Dollar ($)',
                             'EUR' => 'Euro (€)',
