@@ -79,27 +79,56 @@ function setMaxFields() {
 
 // Get fields filled count
 function getFilledCount() {
-    const inputCount = [...inputs]
+    let sum = 0;
+
+    // Count inputs filled
+    sum += [...inputs]
         .filter(input => !excludedTypes.includes(input.type))
         .filter(input => input.value !== '')
         .length;
 
-    const selectCount = [...selects]
-        .filter(select => !select.hasAttribute('disabled'))
-        .filter(select => select.hasAttribute('selected'))
-        .length;
+    // Count select options filled
+    selects.forEach(select => {
+        if(select.value && select.value !== 'default') {
+            sum++;
+        }
+    })
 
-    return inputCount + selectCount;
+    // Sum radio buttons filled
+    radios.forEach(radio => {
+        if(radio.checked) {
+            sum++;
+        }
+    })
+
+    return sum;
 
 }
 
 // Get required fields filled count
-function getRequiredFilledCount() {
-    return [...inputs]
+function getRequiredFilledCount(e) {
+    let sum = 0;
+
+    // Sum required inputs
+    sum += [...inputs]
         .filter(input => !excludedTypes.includes(input.type))
         .filter(input => input.hasAttribute('required'))
         .filter(input => input.value !== '')
         .length;
+
+    // Sum required selects
+    selects.forEach(select => {
+        if(select.value && select.value !== 'default' && select.hasAttribute('required')) {
+            sum++;
+        }
+    })
+
+    // Sum required radios
+    if(e.target.type === 'radio' && e.target.required) {
+        sum++;
+    }
+
+    return sum;
 }
 
 // Get company name
@@ -128,10 +157,10 @@ function updateCompanyName() {
 }
 
 // Update summary
-function updateSummary() {
+function updateSummary(e) {
     // Update total and required fields
     totalFieldsFilled.textContent = getFilledCount();
-    totalRequiredFilled.textContent = getRequiredFilledCount();
+    totalRequiredFilled.textContent = getRequiredFilledCount(e);
 
     // Update company name
     updateCompanyName();
@@ -147,4 +176,4 @@ function initSummary() {
 initSummary();
 
 // Event listener
-clientForm.addEventListener('input', updateSummary);
+clientForm.addEventListener('input', updateSummary.bind(this));

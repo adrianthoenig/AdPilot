@@ -146,6 +146,7 @@
                             title="Active"
                             icon="fas fa-chart-line"
                             message="You’re already working with the client."
+                            required="true"
                             />
                         </div>
 
@@ -157,6 +158,7 @@
                             title="Paused"
                             icon="fas fa-pause"
                             message="Client paused for future work."
+                            required="true"
                             />
 
                             <x-inputs.radio 
@@ -166,6 +168,7 @@
                             title="Draft"
                             icon="fas fa-box"
                             message="Make a draft to save it for later."
+                            required="true"
                             />
                         </div>
                     </x-dashboard.forms.form-block>
