@@ -7,7 +7,7 @@
                 <x-dashboard.sidebar.sidebar-button 
                     icon="user-group" 
                     url="{{ route('dashboard.clients.index') }}" 
-                    :active="request()->is('dashboard/clients')" 
+                    :active="request()->is('dashboard/clients') || request()->is('dashboard/clients/*')"
                 />
                 <x-dashboard.sidebar.sidebar-button 
                     icon="user-plus" 
