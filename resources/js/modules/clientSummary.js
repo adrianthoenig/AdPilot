@@ -28,10 +28,26 @@ const excludedTypes = [
  */
 
 // Divide radios per group
-function countRadioGroups() {
+function getRadioGroupNames() {
     if(!clientForm) return;
 
-    return [...new Set([...radios].map(radio => radio.name))].length;
+    return [...new Set(
+        [...radios].map(radio => radio.name)
+    )];
+}
+
+function divideRadioGroups() {
+    if(!clientForm) return;
+
+    const groups = [];
+
+
+    getRadioGroupNames()
+    .forEach((groupName, index) => {
+        groups[index] = [...radios].filter(radio => radio.name === groupName);
+    })
+
+    return groups;
 }
 
 // Get all fields
@@ -52,7 +68,7 @@ function countTotalFields() {
 
 
     // Divide radios per group
-    sum += countRadioGroups();
+    sum += divideRadioGroups().length;
 
     // Count selects
     sum += selects.length;
@@ -65,10 +81,21 @@ function countTotalFields() {
 function countRequired() {
     if(!clientForm) return;
 
-    const allFields = getAllFields();
-    return allFields
-        .filter(field => field.hasAttribute('required'))
-        .length;
+    let sum = 0;
+
+    // Get required fields
+    sum += getAllFields()
+        .filter(field => field.type !== 'radio')
+        .filter(field => field.hasAttribute('required')).length;
+
+    // Check for single radio required fields
+    divideRadioGroups().forEach(radioGroup => {
+        sum += radioGroup.some(radio => radio.hasAttribute('required'));
+    })
+
+
+    return sum;
+
 }
 
 // Set total and required fields
