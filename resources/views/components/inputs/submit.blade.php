@@ -1,6 +1,6 @@
 @props([
     'title' => 'Add new',
-    'disabled' => true,
+    'disabled' => false,
     'id' => ''
 ])
 

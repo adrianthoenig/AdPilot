@@ -49,4 +49,17 @@ class ClientController extends Controller
     public function show(Client $client) : View {
         return view('dashboard.clients.show')->with('client', $client);
     }
+
+    public function edit() : View {
+        return view('');
+    }
+
+    public function update() {
+
+    }
+
+    public function destroy(Client $client) : RedirectResponse {
+        $client->delete();
+        return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully deleted');
+    }
 }
