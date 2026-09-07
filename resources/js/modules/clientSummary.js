@@ -133,7 +133,7 @@ function getFilledCount() {
 }
 
 // Get required fields filled count
-function getRequiredFilledCount(e) {
+function getRequiredFilledCount() {
     let sum = 0;
 
     // Sum required inputs
@@ -151,9 +151,10 @@ function getRequiredFilledCount(e) {
     })
 
     // Sum required radios
-    if(e.target.type === 'radio' && e.target.required) {
-        sum++;
-    }
+    sum += [...radios]
+        .filter(radio => radio.hasAttribute('required'))
+        .filter(radio => radio.checked)
+        .length;
 
     return sum;
 }
@@ -184,10 +185,10 @@ function updateCompanyName() {
 }
 
 // Update summary
-function updateSummary(e) {
+function updateSummary() {
     // Update total and required fields
     totalFieldsFilled.textContent = getFilledCount();
-    totalRequiredFilled.textContent = getRequiredFilledCount(e);
+    totalRequiredFilled.textContent = getRequiredFilledCount();
 
     // Update company name
     updateCompanyName();
@@ -203,4 +204,4 @@ function initSummary() {
 initSummary();
 
 // Event listener
-clientForm.addEventListener('input', updateSummary.bind(this));
+clientForm.addEventListener('input', updateSummary);
