@@ -9,7 +9,8 @@
                         name="name" 
                         placeholder="MogulZ Media" 
                         label="Company Name" 
-                        required="true" 
+                        required="true"
+                        maxlength="120"
                         />
 
                         <x-inputs.select 
@@ -51,6 +52,7 @@
                         type="url"
                         placeholder="mogulzmedia.com" 
                         label="Website" 
+                        maxlength="255"
                          />
 
                          <x-inputs.text
@@ -58,6 +60,7 @@
                          name="country"
                          placeholder="Spain"
                          label="Country"
+                         maxlength="100"
                          />
 
                         <x-inputs.text 
@@ -65,6 +68,7 @@
                         name="city"
                         placeholder="Madrid"
                         label="City"
+                        maxlength="100"
                         />
 
                         <x-inputs.file 
@@ -82,6 +86,7 @@
                         placeholder="Carlos Higuera"
                         label="Contact name"
                         required="true"
+                        maxlength="120"
                         />
 
                         <x-inputs.text
@@ -91,6 +96,7 @@
                         placeholder="carlos@mogulzmedia.com"
                         label="Email address"
                         required="true"
+                        maxlength="254"
                         />
 
                         <x-inputs.text
@@ -99,6 +105,7 @@
                         type="number"
                         placeholder="+34 678 948 374"
                         label="Phone number"
+                        maxlength="25"
                         />
 
                         <x-inputs.select

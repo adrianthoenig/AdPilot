@@ -23,15 +23,15 @@ class ClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'name' => 'required|string|max:256',
+                'name' => 'required|string|max:120',
                 'industry' => 'required',
-                'website' => 'nullable|url',
-                'country' => 'nullable|string|max:200',
-                'city' => 'nullable|string|max:200',
+                'website' => 'nullable|url|max:255',
+                'country' => 'nullable|string|max:100',
+                'city' => 'nullable|string|max:100',
                 'logo_path' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:2048',
-                'contact_name' => 'required|string|max:256',
-                'email' => 'required|email|max:300',
-                'phone' => 'nullable|string',
+                'contact_name' => 'required|string|max:120',
+                'email' => 'required|email|max:254',
+                'phone' => 'nullable|string|max:25',
                 'job_title' => 'nullable',
                 'client_status' => 'required|in:onboarding,active,paused,draft',
                 'start_date' => 'nullable',
