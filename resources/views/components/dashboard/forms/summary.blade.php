@@ -58,6 +58,6 @@
     <div class="p-6 rounded-xl bg-gray-100 flex flex-col gap-6">
         <h4 class="text-xl">{{ $publishTitle }}</h4>
         <p>{{ $publishMessage }}</p>
-        <x-inputs.submit />
+        <x-inputs.submit title="Add new client" id="submit-client-btn" />
     </div>
 </div>

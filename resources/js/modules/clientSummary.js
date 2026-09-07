@@ -14,6 +14,9 @@ const totalRequiredMax = document.getElementById('required-fields-max');
 const totalRequiredFilled = document.getElementById('required-fields-fill');
 
 const companyName = document.getElementById('company-name-value');
+const clientStatusEl = document.getElementById('client-status-value');
+const statusValue = document.getElementById('status-value');
+const submitBtn = document.getElementById('submit-client-btn');
 
 // Exluded input types
 const excludedTypes = [
@@ -29,7 +32,7 @@ const excludedTypes = [
 
 // Divide radios per group
 function getRadioGroupNames() {
-    if(!clientForm) return;
+    if (!clientForm) return;
 
     return [...new Set(
         [...radios].map(radio => radio.name)
@@ -37,15 +40,15 @@ function getRadioGroupNames() {
 }
 
 function divideRadioGroups() {
-    if(!clientForm) return;
+    if (!clientForm) return;
 
     const groups = [];
 
 
     getRadioGroupNames()
-    .forEach((groupName, index) => {
-        groups[index] = [...radios].filter(radio => radio.name === groupName);
-    })
+        .forEach((groupName, index) => {
+            groups[index] = [...radios].filter(radio => radio.name === groupName);
+        })
 
     return groups;
 }
@@ -57,7 +60,7 @@ function getAllFields() {
 
 // Count total fields
 function countTotalFields() {
-    if(!clientForm) return;
+    if (!clientForm) return;
 
     let sum = 0;
 
@@ -79,7 +82,7 @@ function countTotalFields() {
 
 // Count required inputs
 function countRequired() {
-    if(!clientForm) return;
+    if (!clientForm) return;
 
     let sum = 0;
 
@@ -116,14 +119,14 @@ function getFilledCount() {
 
     // Count select options filled
     selects.forEach(select => {
-        if(select.value && select.value !== 'default') {
+        if (select.value && select.value !== 'default') {
             sum++;
         }
     })
 
     // Sum radio buttons filled
     radios.forEach(radio => {
-        if(radio.checked) {
+        if (radio.checked) {
             sum++;
         }
     })
@@ -145,7 +148,7 @@ function getRequiredFilledCount() {
 
     // Sum required selects
     selects.forEach(select => {
-        if(select.value && select.value !== 'default' && select.hasAttribute('required')) {
+        if (select.value && select.value !== 'default' && select.hasAttribute('required')) {
             sum++;
         }
     })
@@ -159,29 +162,68 @@ function getRequiredFilledCount() {
     return sum;
 }
 
-// Get company name
-function getCompanyName() {
-    if(!clientForm) return;
-    return document.getElementById('name').value;
+function createPendingSpan(parentEl) {
+    // Create 'pending' span element
+    const span = document.createElement('span');
+    span.className = 'text-gray-400 animate-pulse';
+    span.textContent = 'Pending';
+
+    parentEl.textContent = '';
+    parentEl.append(span);
 }
 
 // Update company name
 function updateCompanyName() {
-    if(!clientForm) return;
-    let companyNameValue = getCompanyName();
+    if (!clientForm) return;
+    let companyNameValue = document.getElementById('name').value;
 
-    if(!companyNameValue) {    
-        // Create 'pending' span element
-        const span = document.createElement('span');
-        span.className = 'text-gray-400 animate-pulse';
-        span.textContent = 'Pending';
-
-        // Appending span element
-        companyName.textContent = '';
-        companyName.append(span);
+    if (!companyNameValue) {
+        createPendingSpan(companyName);
         return;
     }
     companyName.textContent = companyNameValue;
+}
+
+// Update client status
+function updateClientStatus() {
+    if (!clientForm) return;
+
+    const clientStatus = clientForm.querySelector('input[name="client_status"]:checked')?.value;
+    if (clientStatus) {
+        clientStatusEl.textContent = capitalize(clientStatus);
+        return;
+    }
+
+    createPendingSpan(clientStatusEl);
+}
+
+// Update required status
+function updateRequiredStatus() {
+    if (getRequiredFilledCount() === countRequired()) {
+        // Change required text styles
+        totalRequiredFilled.className = 'text-green-500';
+
+        // Change status message
+        statusValue.textContent = 'Ready';
+        statusValue.className = 'text-green-500 animate-pulse';
+
+        // Make submit button available
+        submitBtn.removeAttribute('disabled');
+        submitBtn.className = 'cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-primary-400 hover:bg-primary-500 transition-colors rounded-lg text-white flex items-center gap-2';
+
+        return;
+    }
+
+    // Reset to default
+    totalRequiredFilled.className = 'text-red-500';
+
+    // Change status message
+    statusValue.textContent = 'Not ready';
+    statusValue.className = 'text-red-500 animate-pulse';
+
+    submitBtn.setAttribute('disabled', true);
+    submitBtn.className = 'flex items-center justify-center gap-2 px-4 py-3 bg-primary-200 transition-colors rounded-lg text-white flex items-center gap-2';
+
 }
 
 // Update summary
@@ -190,8 +232,14 @@ function updateSummary() {
     totalFieldsFilled.textContent = getFilledCount();
     totalRequiredFilled.textContent = getRequiredFilledCount();
 
+    // Required completed
+    updateRequiredStatus();
+
     // Update company name
     updateCompanyName();
+
+    // Update client status
+    updateClientStatus();
 
 }
 
