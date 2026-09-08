@@ -11,7 +11,7 @@
         <div class="flex items-center gap-2">
             <x-action-button url="{{ route('dashboard.clients.show', $client->id) }}" icon="eye" />
             <x-action-button url="/dashboard" icon="pencil" />
-            <x-action-button url="/dashboard" icon="trash" />
+            <x-action-button url="/dashboard" icon="trash" type="btn" />
         </div>
     </div>
     <div class="flex items-center gap-4 flex-1">
