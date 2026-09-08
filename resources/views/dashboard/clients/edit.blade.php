@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-dashboard.main title="Edit client">
-            <form action="/dashboard/clients/" method="POST" id="create-client-form" class="flex items-start gap-6" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.clients.update', $client) }}" method="POST" id="create-client-form" class="flex items-start gap-6" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="bg-white flex-1 p-6 rounded-3xl flex flex-col gap-8">

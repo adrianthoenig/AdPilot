@@ -43,7 +43,7 @@ class ClientController extends Controller
         
 
         Client::create($validatedData);
-        return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully created')->with('success', 'Client created successfully');
+        return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully created');
     }
 
     public function show(Client $client) : View {
@@ -54,8 +54,10 @@ class ClientController extends Controller
         return view('dashboard.clients.edit')->with('client', $client);
     }
 
-    public function update() {
-
+    public function update(ClientRequest $request, Client $client) : RedirectResponse {
+        $validatedData = $request->validated();
+        $client->update($validatedData);
+        return redirect()->route('dashboard.clients.index')->with('success', 'Client successfully updated');
     }
 
     public function destroy(Client $client) : RedirectResponse {
