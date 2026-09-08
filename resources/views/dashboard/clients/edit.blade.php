@@ -265,6 +265,7 @@
                             icon="fas fa-clipboard"
                             message="Your client is still in the onboarding phase."
                             required="true"
+                            checked="{{ $client->client_status === 'onboarding' }}"
                             />
 
                             <x-inputs.radio 
@@ -275,6 +276,7 @@
                             icon="fas fa-chart-line"
                             message="You’re already working with the client."
                             required="true"
+                            checked="{{ $client->client_status === 'active' }}"
                             />
                         </div>
 
@@ -287,6 +289,7 @@
                             icon="fas fa-pause"
                             message="Client paused for future work."
                             required="true"
+                            checked="{{ $client->client_status === 'paused' }}"
                             />
 
                             <x-inputs.radio 
@@ -297,6 +300,7 @@
                             icon="fas fa-box"
                             message="Make a draft to save it for later."
                             required="true"
+                            checked="{{ $client->client_status === 'draft' }}"
                             />
                         </div>
                     </x-dashboard.forms.form-block>
@@ -424,6 +428,7 @@
                             value="meta"
                             title="Meta Ads"
                             icon="fab fa-meta"
+                            checked="{{ $client->advertising_platforms === 'meta' }}"
                             />
 
                             <x-inputs.radio 
@@ -432,6 +437,7 @@
                             value="google"
                             title="Google Ads"
                             icon="fab fa-google"
+                            checked="{{ $client->advertising_platforms === 'google' }}"
                             />
                         </div>
                         <div class="flex items-center gap-6">
@@ -441,6 +447,7 @@
                             value="tiktok"
                             title="TikTok Ads"
                             icon="fab fa-tiktok"
+                            checked="{{ $client->advertising_platforms === 'tiktok' }}"
                             />
 
                             <x-inputs.radio 
@@ -449,13 +456,14 @@
                             value="linkedin"
                             title="Linkedin Ads"
                             icon="fab fa-linkedin"
+                            checked="{{ $client->advertising_platforms === 'linkedin' }}"
                             />
                         </div>
                     </x-dashboard.forms.form-block>
                 </div>
                 <x-dashboard.forms.summary 
                 summaryTitle="Client Summary"
-                publishTitle="Create Client"
+                publishTitle="Update client"
                 />
             </form>
         </div>

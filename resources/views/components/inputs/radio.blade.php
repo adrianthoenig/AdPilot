@@ -5,14 +5,15 @@
     'title' => '',
     'icon' => null,
     'message' => null,
-    'required' => false
+    'required' => false,
+    'checked' => false
 ])
 
 
 
 <label for="{{ $id }}" class="w-full">
     <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}" {{ $required ? 'required' : '' }}
-    {{ old($name) == $id ? 'checked' : '' }}
+    {{ $checked ? 'checked' : '' }}
     class="peer appearance-none">
     <div
         class="form__input cursor-pointer p-3 flex flex-col gap-2 bg-gray-100 peer-checked:bg-gray-200 peer-checked:outline peer-checked:outline-gray-700 hover:bg-gray-200 rounded-lg">
