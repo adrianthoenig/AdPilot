@@ -5,6 +5,7 @@ const clientForm = document.getElementById('client-form');
 
 // Form inputs
 const companyNameValue = document.getElementById('company-name');
+const clientStatusValue = document.querySelectorAll('input[name="client_status"]');
 
 // Summary details
 const companyNameEl = document.getElementById('company-name-detail');
@@ -20,10 +21,8 @@ function setPending(parentEl, message = 'Pending') {
 
 // Update company name
 function updateCompanyName() {
-    // Clear company name summary element
-
     // Check if value is empty
-    let companyName = companyNameValue.value;
+    const companyName = companyNameValue.value;
 
     // If empty, set 'Pending' state
     if(!companyName) {
@@ -36,9 +35,37 @@ function updateCompanyName() {
     companyNameEl.textContent = companyName;
 }
 
+// Get checked client status
+function getCheckedClientStatus() {
+    const [ clientStatus ] = [...clientStatusValue]
+        .filter(clientStatus => clientStatus.checked);
+
+
+    return clientStatus.value;
+}
+
+// Update client status
+function updateClientStatus() {
+    // Check if value is checked
+    const clientStatus = getCheckedClientStatus();
+    
+    // If empty, set 'Pending' state
+    if(!clientStatus) {
+        clientStatusEl.textContent = '';
+        setPending(clientStatusEl);
+        return;
+    }
+
+    // Update client status value
+    clientStatusEl.textContent = capitalize(clientStatus);
+}
+
 function updateSummary() {
     // Update client name
     updateCompanyName();
+
+    // Update client status
+    updateClientStatus();
 }
 
 // Change event listener
