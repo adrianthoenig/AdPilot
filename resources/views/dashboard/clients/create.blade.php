@@ -19,31 +19,106 @@
                         label="Industry"
                         default="Select your clients industry"
                         :options="[
-                                'automotive' => 'Automotive',
-                                'beauty' => 'Beauty',
-                                'construction_real_estate' => 'Construction & Real Estate',
-                                'consulting' => 'Consulting',
-                                'education' => 'Education',
-                                'ecommerce' => 'Ecommerce',
-                                'fashion' => 'Fashion',
-                                'finance' => 'Finance',
-                                'fitness' => 'Fitness',
-                                'food' => 'Food',
-                                'healthcare' => 'Healthcare',
-                                'home_interior' => 'Home & Interior',
-                                'hospitality_travel' => 'Hospitality & Travel',
-                                'legal_services' => 'Legal Services',
-                                'manufacturing' => 'Manufacturing',
-                                'marketing_advertising' => 'Marketing & Advertising',
-                                'media_entertainment' => 'Media & Entertainment',
-                                'nonprofit' => 'Nonprofit',
-                                'pet_care' => 'Pet Care',
-                                'professional_services' => 'Professional Services',
-                                'restaurants_cafes' => 'Restaurants & Cafes',
-                                'saas_tech' => 'SaaS & Technology',
-                                'sports' => 'Sports',
-                                'telecommunications' => 'Telecommunications',
-                                'other' => 'Other'
+                                'automotive' => [
+                                    'value' => 'Automotive',
+                                    'selected' => old('industry') === 'automotive'
+                                    ],
+                                'beauty' => [
+                                    'value' => 'Beauty',
+                                    'selected' => old('industry') === 'beauty'
+                                    ],
+                                'construction_real_estate' => [
+                                    'value' => 'Construction & Real Estate',
+                                    'selected' => old('industry') === 'construction_real_estate'
+                                    ],
+                                'consulting' => [
+                                    'value' => 'Consulting',
+                                    'selected' => old('industry') === 'consulting'
+                                    ],
+                                'education' => [
+                                    'value' => 'Education',
+                                    'selected' => old('industry') === 'education'
+                                    ],
+                                'ecommerce' => [
+                                    'value' => 'Ecommerce',
+                                    'selected' => old('industry') === 'ecommerce'
+                                    ],
+                                'fashion' => [
+                                    'value' => 'Fashion',
+                                    'selected' => old('industry') === 'fashion'
+                                    ],
+                                'finance' => [
+                                    'value' => 'Finance',
+                                    'selected' => old('industry') === 'finance'
+                                    ],
+                                'fitness' => [
+                                    'value' => 'Fitness',
+                                    'selected' => old('industry') === 'fitness'
+                                    ],
+                                'food' => [
+                                    'value' => 'Food',
+                                    'selected' => old('industry') === 'food'
+                                    ],
+                                'healthcare' => [
+                                    'value' => 'Healthcare',
+                                    'selected' => old('industry') === 'healthcare'
+                                    ],
+                                'home_interior' => [
+                                    'value' => 'Home & Interior',
+                                    'selected' => old('industry') === 'home_interior'
+                                    ],
+                                'hospitality_travel' => [
+                                    'value' => 'Hospitality & Travel',
+                                    'selected' => old('industry') === 'hospitality_travel'
+                                    ],
+                                'legal_services' => [
+                                    'value' => 'Legal Services',
+                                    'selected' => old('industry') === 'legal_services'
+                                    ],
+                                'manufacturing' => [
+                                    'value' => 'Manufacturing',
+                                    'selected' => old('industry') === 'manufacturing'
+                                    ],
+                                'marketing_advertising' => [
+                                    'value' => 'Marketing & Advertising',
+                                    'selected' => old('industry') === 'marketing_advertising'
+                                    ],
+                                'media_entertainment' => [
+                                    'value' => 'Media & Entertainment',
+                                    'selected' => old('industry') === 'media_entertainment'
+                                    ],
+                                'nonprofit' => [
+                                    'value' => 'Nonprofit',
+                                    'selected' => old('industry') === 'nonprofit'
+                                    ],
+                                'pet_care' => [
+                                    'value' => 'Pet Care',
+                                    'selected' => old('industry') === 'pet_care'
+                                    ],
+                                'professional_services' => [
+                                    'value' => 'Professional Services',
+                                    'selected' => old('industry') === 'professional_services'
+                                    ],
+                                'restaurants_cafes' => [
+                                    'value' => 'Restaurants & Cafes',
+                                    'selected' => old('industry') === 'restaurants_cafes'
+                                    ],
+                                'saas_tech' => [
+                                    'value' => 'SaaS & Technology',
+                                    'selected' => old('industry') === 'saas_tech'
+                                    ],
+                                'sports' => [
+                                    'value' => 'Sports',
+                                    'selected' => old('industry') === 'sports'
+                                    ],
+                                'telecommunications' => [
+                                    'value' => 'Telecommunications',
+                                    'selected' => old('industry') === 'telecommunications'
+                                    ],
+                                'other' => [
+                                    'value' => 'Other',
+                                    'selected' => old('industry') === 'other'
+                                ]
                             ]"/>
 
                         <x-inputs.text 
@@ -114,19 +189,58 @@
                         label="Job title"
                         default="Select a job title"
                         :options="[
-                            'ceo' => 'Chief Executive Officer (CEO)',
-                            'founder' => 'Founder',
-                            'co-founder' => 'Co-Founder',
-                            'owner' => 'Owner',
-                            'cmo' => 'Chief Marketing Officer (CMO)',
-                            'marketing_manager' => 'Marketing Manager',
-                            'paid_media_manager' => 'Paid Media Manager',
-                            'social_media_manager' => 'Social Media Manager',
-                            'brand_manager' => 'Brand Manager',
-                            'sales_manager' => 'Sales Manager',
-                            'product_manager' => 'Product Manager (PM)',
-                            'creative_director' => 'Creative Director',
-                            'other' => 'Other'
+                            'ceo' => [
+                                'value' => 'Chief Executive Officer (CEO)',
+                                'selected' => old('job_title') === 'ceo'
+                            ],
+                            'founder' => [
+                                'value' => 'Founder',
+                                'selected' => old('job_title') === 'founder'
+                            ],
+                            'co-founder' => [
+                                'value' => 'Co-Founder',
+                                'selected' => old('job_title') === 'co-founder'
+                            ],
+                            'owner' => [
+                                'value' => 'Owner',
+                                'selected' => old('job_title') === 'owner'
+                            ],
+                            'cmo' => [
+                                'value' => 'Chief Marketing Officer (CMO)',
+                                'selected' => old('job_title') === 'cmo'
+                            ],
+                            'marketing_manager' => [
+                                'value' => 'Marketing Manager',
+                                'selected' => old('job_title') === 'marketing_manager'
+                            ],
+                            'paid_media_manager' => [
+                                'value' => 'Paid Media Manager',
+                                'selected' => old('job_title') === 'paid_media_manager'
+                            ],
+                            'social_media_manager' => [
+                                'value' => 'Social Media Manager',
+                                'selected' => old('job_title') === 'social_media_manager'
+                            ],
+                            'brand_manager' => [
+                                'value' => 'Brand Manager',
+                                'selected' => old('job_title') === 'brand_manager'
+                            ],
+                            'sales_manager' => [
+                                'value' => 'Sales Manager',
+                                'selected' => old('job_title') === 'sales_manager'
+                            ],
+                            'product_manager' => [
+                                'value' => 'Product Manager (PM)',
+                                'selected' => old('job_title') === 'product_manager'
+                            ],
+                            'creative_director' => [
+                                'value' => 'Creative Director',
+                                'selected' => old('job_title') === 'creative_director'
+                            ],
+                            'other' => [
+                                'value' => 'Other',
+                                'selected' => old('job_title') === 'other'
+                            ]
                         ]"
                         />
                     </x-dashboard.forms.form-block>
@@ -196,27 +310,90 @@
                         required="true"
                         default="Select a currency"
                         :options="[
-                            'USD' => 'US Dollar ($)',
-                            'EUR' => 'Euro (€)',
-                            'GBP' => 'British Pound (£)',
-                            'CHF' => 'Swiss Franc (CHF)',
-                            'IRR' => 'Iranian Rial (﷼)',
-                            'CAD' => 'Canadian Dollar (CA$)',
-                            'AUD' => 'Australian Dollar (A$)',
-                            'NZD' => 'New Zealand Dollar (NZ$)',
-                            'JPY' => 'Japanese Yen (¥)',
-                            'CNY' => 'Chinese Yuan (CN¥)',
-                            'INR' => 'Indian Rupee (₹)',
-                            'SGD' => 'Singapore Dollar (S$)',
-                            'HKD' => 'Hong Kong Dollar (HK$)',
-                            'AED' => 'UAE Dirham (AED)',
-                            'SAR' => 'Saudi Riyal (SAR)',
-                            'SEK' => 'Swedish Krona (SEK)',
-                            'NOK' => 'Norwegian Krone (NOK)',
-                            'DKK' => 'Danish Krone (DKK)',
-                            'MXN' => 'Mexican Peso (MX$)',
-                            'BRL' => 'Brazilian Real (R$)',
-                            'PLN' => 'Polish Złoty (zł)'
+                            'USD' => [
+                                'value' =>'US Dollar ($)',
+                                'selected' => old('currency') === 'USD'
+                                ],
+                            'EUR' => [
+                                'value' =>'Euro (€)',
+                                'selected' => old('currency') === 'EUR'
+                                ],
+                            'GBP' => [
+                                'value' =>'British Pound (£)',
+                                'selected' => old('currency') === 'GBP'
+                                ],
+                            'CHF' => [
+                                'value' =>'Swiss Franc (CHF)',
+                                'selected' => old('currency') === 'CHF'
+                                ],
+                            'IRR' => [
+                                'value' =>'Iranian Rial (﷼)',
+                                'selected' => old('currency') === 'IRR'
+                                ],
+                            'CAD' => [
+                                'value' =>'Canadian Dollar (CA$)',
+                                'selected' => old('currency') === 'CAD'
+                                ],
+                            'AUD' => [
+                                'value' =>'Australian Dollar (A$)',
+                                'selected' => old('currency') === 'AUD'
+                                ],
+                            'NZD' => [
+                                'value' =>'New Zealand Dollar (NZ$)',
+                                'selected' => old('currency') === 'NZD'
+                                ],
+                            'JPY' => [
+                                'value' =>'Japanese Yen (¥)',
+                                'selected' => old('currency') === 'JPY'
+                                ],
+                            'CNY' => [
+                                'value' =>'Chinese Yuan (CN¥)',
+                                'selected' => old('currency') === 'CNY'
+                                ],
+                            'INR' => [
+                                'value' =>'Indian Rupee (₹)',
+                                'selected' => old('currency') === 'INR'
+                                ],
+                            'SGD' => [
+                                'value' =>'Singapore Dollar (S$)',
+                                'selected' => old('currency') === 'SGD'
+                                ],
+                            'HKD' => [
+                                'value' =>'Hong Kong Dollar (HK$)',
+                                'selected' => old('currency') === 'HKD'
+                                ],
+                            'AED' => [
+                                'value' =>'UAE Dirham (AED)',
+                                'selected' => old('currency') === 'AED'
+                                ],
+                            'SAR' => [
+                                'value' =>'Saudi Riyal (SAR)',
+                                'selected' => old('currency') === 'SAR'
+                                ],
+                            'SEK' => [
+                                'value' =>'Swedish Krona (SEK)',
+                                'selected' => old('currency') === 'SEK'
+                                ],
+                            'NOK' => [
+                                'value' =>'Norwegian Krone (NOK)',
+                                'selected' => old('currency') === 'NOK'
+                                ],
+                            'DKK' => [
+                                'value' =>'Danish Krone (DKK)',
+                                'selected' => old('currency') === 'DKK'
+                                ],
+                            'MXN' => [
+                                'value' =>'Mexican Peso (MX$)',
+                                'selected' => old('currency') === 'MXN'
+                                ],
+                            'BRL' => [
+                                'value' =>'Brazilian Real (R$)',
+                                'selected' => old('currency') === 'BRL'
+                                ],
+                            'PLN' => [
+                                'value' =>'Polish Złoty (zł)',
+                                'selected' => old('currency') === 'PLN'
+                            ]
                         ]"
                         />
 

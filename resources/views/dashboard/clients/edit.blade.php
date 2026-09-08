@@ -198,55 +198,55 @@
                         :options="[
                             'ceo' => [
                                 'value' => 'Chief Executive Officer (CEO)',
-                                'selected' => false
+                                'selected' => $client->job_title === 'ceo'
                             ],
                             'founder' => [
                                 'value' => 'Founder',
-                                'selected' => false
+                                'selected' => $client->job_title === 'founder'
                             ],
                             'co-founder' => [
                                 'value' => 'Co-Founder',
-                                'selected' => false
+                                'selected' => $client->job_title === 'co-founder'
                             ],
                             'owner' => [
                                 'value' => 'Owner',
-                                'selected' => false
+                                'selected' => $client->job_title === 'owner'
                             ],
                             'cmo' => [
                                 'value' => 'Chief Marketing Officer (CMO)',
-                                'selected' => false
+                                'selected' => $client->job_title === 'cmo'
                             ],
                             'marketing_manager' => [
                                 'value' => 'Marketing Manager',
-                                'selected' => false
+                                'selected' => $client->job_title === 'marketing_manager'
                             ],
                             'paid_media_manager' => [
                                 'value' => 'Paid Media Manager',
-                                'selected' => false
+                                'selected' => $client->job_title === 'paid_media_manager'
                             ],
                             'social_media_manager' => [
                                 'value' => 'Social Media Manager',
-                                'selected' => false
+                                'selected' => $client->job_title === 'social_media_manager'
                             ],
                             'brand_manager' => [
                                 'value' => 'Brand Manager',
-                                'selected' => false
+                                'selected' => $client->job_title === 'brand_manager'
                             ],
                             'sales_manager' => [
                                 'value' => 'Sales Manager',
-                                'selected' => false
+                                'selected' => $client->job_title === 'sales_manager'
                             ],
                             'product_manager' => [
                                 'value' => 'Product Manager (PM)',
-                                'selected' => false
+                                'selected' => $client->job_title === 'product_manager'
                             ],
                             'creative_director' => [
                                 'value' => 'Creative Director',
-                                'selected' => false
+                                'selected' => $client->job_title === 'creative_director'
                             ],
                             'other' => [
                                 'value' => 'Other',
-                                'selected' => false
+                                'selected' => $client->job_title === 'other'
                             ]
                         ]"
                         />
@@ -320,87 +320,87 @@
                         :options="[
                             'USD' => [
                                 'value' =>'US Dollar ($)',
-                                'selected' => false
+                                'selected' => $client->currency === 'USD'
                                 ],
                             'EUR' => [
                                 'value' =>'Euro (€)',
-                                'selected' => false
+                                'selected' => $client->currency === 'EUR'
                                 ],
                             'GBP' => [
                                 'value' =>'British Pound (£)',
-                                'selected' => false
+                                'selected' => $client->currency === 'GBP'
                                 ],
                             'CHF' => [
                                 'value' =>'Swiss Franc (CHF)',
-                                'selected' => false
+                                'selected' => $client->currency === 'CHF'
                                 ],
                             'IRR' => [
                                 'value' =>'Iranian Rial (﷼)',
-                                'selected' => false
+                                'selected' => $client->currency === 'IRR'
                                 ],
                             'CAD' => [
                                 'value' =>'Canadian Dollar (CA$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'CAD'
                                 ],
                             'AUD' => [
                                 'value' =>'Australian Dollar (A$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'AUD'
                                 ],
                             'NZD' => [
                                 'value' =>'New Zealand Dollar (NZ$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'NZD'
                                 ],
                             'JPY' => [
                                 'value' =>'Japanese Yen (¥)',
-                                'selected' => false
+                                'selected' => $client->currency === 'JPY'
                                 ],
                             'CNY' => [
                                 'value' =>'Chinese Yuan (CN¥)',
-                                'selected' => false
+                                'selected' => $client->currency === 'CNY'
                                 ],
                             'INR' => [
                                 'value' =>'Indian Rupee (₹)',
-                                'selected' => false
+                                'selected' => $client->currency === 'INR'
                                 ],
                             'SGD' => [
                                 'value' =>'Singapore Dollar (S$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'SGD'
                                 ],
                             'HKD' => [
                                 'value' =>'Hong Kong Dollar (HK$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'HKD'
                                 ],
                             'AED' => [
                                 'value' =>'UAE Dirham (AED)',
-                                'selected' => false
+                                'selected' => $client->currency === 'AED'
                                 ],
                             'SAR' => [
                                 'value' =>'Saudi Riyal (SAR)',
-                                'selected' => false
+                                'selected' => $client->currency === 'SAR'
                                 ],
                             'SEK' => [
                                 'value' =>'Swedish Krona (SEK)',
-                                'selected' => false
+                                'selected' => $client->currency === 'SEK'
                                 ],
                             'NOK' => [
                                 'value' =>'Norwegian Krone (NOK)',
-                                'selected' => false
+                                'selected' => $client->currency === 'NOK'
                                 ],
                             'DKK' => [
                                 'value' =>'Danish Krone (DKK)',
-                                'selected' => false
+                                'selected' => $client->currency === 'DKK'
                                 ],
                             'MXN' => [
                                 'value' =>'Mexican Peso (MX$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'MXN'
                                 ],
                             'BRL' => [
                                 'value' =>'Brazilian Real (R$)',
-                                'selected' => false
+                                'selected' => $client->currency === 'BRL'
                                 ],
                             'PLN' => [
                                 'value' =>'Polish Złoty (zł)',
-                                'selected' => false
+                                'selected' => $client->currency === 'PLN'
                             ]
                         ]"
                         />
