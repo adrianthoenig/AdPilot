@@ -39,7 +39,9 @@ function updateCompanyName() {
 function getCheckedClientStatus() {
     const [ clientStatus ] = [...clientStatusValue]
         .filter(clientStatus => clientStatus.checked);
-
+    
+    // In case there's non selected yet
+    if(!clientStatus) return;
 
     return clientStatus.value;
 }
