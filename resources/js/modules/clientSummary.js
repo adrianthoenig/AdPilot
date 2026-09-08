@@ -20,11 +20,14 @@ function setPending(parentEl, message = 'Pending') {
 
 // Update company name
 function updateCompanyName() {
+    // Clear company name summary element
+
     // Check if value is empty
     let companyName = companyNameValue.value;
 
     // If empty, set 'Pending' state
     if(!companyName) {
+        companyNameEl.textContent = '';
         setPending(companyNameEl);
         return;
     }
