@@ -20,31 +20,106 @@
                         label="Industry"
                         default="Select your clients industry"
                         :options="[
-                                'automotive' => 'Automotive',
-                                'beauty' => 'Beauty',
-                                'construction_real_estate' => 'Construction & Real Estate',
-                                'consulting' => 'Consulting',
-                                'education' => 'Education',
-                                'ecommerce' => 'Ecommerce',
-                                'fashion' => 'Fashion',
-                                'finance' => 'Finance',
-                                'fitness' => 'Fitness',
-                                'food' => 'Food',
-                                'healthcare' => 'Healthcare',
-                                'home_interior' => 'Home & Interior',
-                                'hospitality_travel' => 'Hospitality & Travel',
-                                'legal_services' => 'Legal Services',
-                                'manufacturing' => 'Manufacturing',
-                                'marketing_advertising' => 'Marketing & Advertising',
-                                'media_entertainment' => 'Media & Entertainment',
-                                'nonprofit' => 'Nonprofit',
-                                'pet_care' => 'Pet Care',
-                                'professional_services' => 'Professional Services',
-                                'restaurants_cafes' => 'Restaurants & Cafes',
-                                'saas_tech' => 'SaaS & Technology',
-                                'sports' => 'Sports',
-                                'telecommunications' => 'Telecommunications',
-                                'other' => 'Other'
+                                'automotive' => [
+                                    'value' => 'Automotive',
+                                    'selected' => $client->industry === 'automotive'
+                                    ],
+                                'beauty' => [
+                                    'value' => 'Beauty',
+                                    'selected' => $client->industry === 'beauty'
+                                    ],
+                                'construction_real_estate' => [
+                                    'value' => 'Construction & Real Estate',
+                                    'selected' => $client->industry === 'construction_real_estate'
+                                    ],
+                                'consulting' => [
+                                    'value' => 'Consulting',
+                                    'selected' => $client->industry === 'consulting'
+                                    ],
+                                'education' => [
+                                    'value' => 'Education',
+                                    'selected' => $client->industry === 'education'
+                                    ],
+                                'ecommerce' => [
+                                    'value' => 'Ecommerce',
+                                    'selected' => $client->industry === 'ecommerce'
+                                    ],
+                                'fashion' => [
+                                    'value' => 'Fashion',
+                                    'selected' => $client->industry === 'fashion'
+                                    ],
+                                'finance' => [
+                                    'value' => 'Finance',
+                                    'selected' => $client->industry === 'finance'
+                                    ],
+                                'fitness' => [
+                                    'value' => 'Fitness',
+                                    'selected' => $client->industry === 'fitness'
+                                    ],
+                                'food' => [
+                                    'value' => 'Food',
+                                    'selected' => $client->industry === 'food'
+                                    ],
+                                'healthcare' => [
+                                    'value' => 'Healthcare',
+                                    'selected' => $client->industry === 'healthcare'
+                                    ],
+                                'home_interior' => [
+                                    'value' => 'Home & Interior',
+                                    'selected' => $client->industry === 'home_interior'
+                                    ],
+                                'hospitality_travel' => [
+                                    'value' => 'Hospitality & Travel',
+                                    'selected' => $client->industry === 'hospitality_travel'
+                                    ],
+                                'legal_services' => [
+                                    'value' => 'Legal Services',
+                                    'selected' => $client->industry === 'legal_services'
+                                    ],
+                                'manufacturing' => [
+                                    'value' => 'Manufacturing',
+                                    'selected' => $client->industry === 'manufacturing'
+                                    ],
+                                'marketing_advertising' => [
+                                    'value' => 'Marketing & Advertising',
+                                    'selected' => $client->industry === 'marketing_advertising'
+                                    ],
+                                'media_entertainment' => [
+                                    'value' => 'Media & Entertainment',
+                                    'selected' => $client->industry === 'media_entertainment'
+                                    ],
+                                'nonprofit' => [
+                                    'value' => 'Nonprofit',
+                                    'selected' => $client->industry === 'nonprofit'
+                                    ],
+                                'pet_care' => [
+                                    'value' => 'Pet Care',
+                                    'selected' => $client->industry === 'pet_care'
+                                    ],
+                                'professional_services' => [
+                                    'value' => 'Professional Services',
+                                    'selected' => $client->industry === 'professional_services'
+                                    ],
+                                'restaurants_cafes' => [
+                                    'value' => 'Restaurants & Cafes',
+                                    'selected' => $client->industry === 'restaurants_cafes'
+                                    ],
+                                'saas_tech' => [
+                                    'value' => 'SaaS & Technology',
+                                    'selected' => $client->industry === 'saas_tech'
+                                    ],
+                                'sports' => [
+                                    'value' => 'Sports',
+                                    'selected' => $client->industry === 'sports'
+                                    ],
+                                'telecommunications' => [
+                                    'value' => 'Telecommunications',
+                                    'selected' => $client->industry === 'telecommunications'
+                                    ],
+                                'other' => [
+                                    'value' => 'Other',
+                                    'selected' => $client->industry === 'other'
+                                ]
                             ]"/>
 
                         <x-inputs.text 
@@ -121,19 +196,58 @@
                         label="Job title"
                         default="Select a job title"
                         :options="[
-                            'ceo' => 'Chief Executive Officer (CEO)',
-                            'founder' => 'Founder',
-                            'co-founder' => 'Co-Founder',
-                            'owner' => 'Owner',
-                            'cmo' => 'Chief Marketing Officer (CMO)',
-                            'marketing_manager' => 'Marketing Manager',
-                            'paid_media_manager' => 'Paid Media Manager',
-                            'social_media_manager' => 'Social Media Manager',
-                            'brand_manager' => 'Brand Manager',
-                            'sales_manager' => 'Sales Manager',
-                            'product_manager' => 'Product Manager (PM)',
-                            'creative_director' => 'Creative Director',
-                            'other' => 'Other'
+                            'ceo' => [
+                                'value' => 'Chief Executive Officer (CEO)',
+                                'selected' => false
+                            ],
+                            'founder' => [
+                                'value' => 'Founder',
+                                'selected' => false
+                            ],
+                            'co-founder' => [
+                                'value' => 'Co-Founder',
+                                'selected' => false
+                            ],
+                            'owner' => [
+                                'value' => 'Owner',
+                                'selected' => false
+                            ],
+                            'cmo' => [
+                                'value' => 'Chief Marketing Officer (CMO)',
+                                'selected' => false
+                            ],
+                            'marketing_manager' => [
+                                'value' => 'Marketing Manager',
+                                'selected' => false
+                            ],
+                            'paid_media_manager' => [
+                                'value' => 'Paid Media Manager',
+                                'selected' => false
+                            ],
+                            'social_media_manager' => [
+                                'value' => 'Social Media Manager',
+                                'selected' => false
+                            ],
+                            'brand_manager' => [
+                                'value' => 'Brand Manager',
+                                'selected' => false
+                            ],
+                            'sales_manager' => [
+                                'value' => 'Sales Manager',
+                                'selected' => false
+                            ],
+                            'product_manager' => [
+                                'value' => 'Product Manager (PM)',
+                                'selected' => false
+                            ],
+                            'creative_director' => [
+                                'value' => 'Creative Director',
+                                'selected' => false
+                            ],
+                            'other' => [
+                                'value' => 'Other',
+                                'selected' => false
+                            ]
                         ]"
                         />
                     </x-dashboard.forms.form-block>
@@ -204,27 +318,90 @@
                         required="true"
                         default="Select a currency"
                         :options="[
-                            'USD' => 'US Dollar ($)',
-                            'EUR' => 'Euro (€)',
-                            'GBP' => 'British Pound (£)',
-                            'CHF' => 'Swiss Franc (CHF)',
-                            'IRR' => 'Iranian Rial (﷼)',
-                            'CAD' => 'Canadian Dollar (CA$)',
-                            'AUD' => 'Australian Dollar (A$)',
-                            'NZD' => 'New Zealand Dollar (NZ$)',
-                            'JPY' => 'Japanese Yen (¥)',
-                            'CNY' => 'Chinese Yuan (CN¥)',
-                            'INR' => 'Indian Rupee (₹)',
-                            'SGD' => 'Singapore Dollar (S$)',
-                            'HKD' => 'Hong Kong Dollar (HK$)',
-                            'AED' => 'UAE Dirham (AED)',
-                            'SAR' => 'Saudi Riyal (SAR)',
-                            'SEK' => 'Swedish Krona (SEK)',
-                            'NOK' => 'Norwegian Krone (NOK)',
-                            'DKK' => 'Danish Krone (DKK)',
-                            'MXN' => 'Mexican Peso (MX$)',
-                            'BRL' => 'Brazilian Real (R$)',
-                            'PLN' => 'Polish Złoty (zł)'
+                            'USD' => [
+                                'value' =>'US Dollar ($)',
+                                'selected' => false
+                                ],
+                            'EUR' => [
+                                'value' =>'Euro (€)',
+                                'selected' => false
+                                ],
+                            'GBP' => [
+                                'value' =>'British Pound (£)',
+                                'selected' => false
+                                ],
+                            'CHF' => [
+                                'value' =>'Swiss Franc (CHF)',
+                                'selected' => false
+                                ],
+                            'IRR' => [
+                                'value' =>'Iranian Rial (﷼)',
+                                'selected' => false
+                                ],
+                            'CAD' => [
+                                'value' =>'Canadian Dollar (CA$)',
+                                'selected' => false
+                                ],
+                            'AUD' => [
+                                'value' =>'Australian Dollar (A$)',
+                                'selected' => false
+                                ],
+                            'NZD' => [
+                                'value' =>'New Zealand Dollar (NZ$)',
+                                'selected' => false
+                                ],
+                            'JPY' => [
+                                'value' =>'Japanese Yen (¥)',
+                                'selected' => false
+                                ],
+                            'CNY' => [
+                                'value' =>'Chinese Yuan (CN¥)',
+                                'selected' => false
+                                ],
+                            'INR' => [
+                                'value' =>'Indian Rupee (₹)',
+                                'selected' => false
+                                ],
+                            'SGD' => [
+                                'value' =>'Singapore Dollar (S$)',
+                                'selected' => false
+                                ],
+                            'HKD' => [
+                                'value' =>'Hong Kong Dollar (HK$)',
+                                'selected' => false
+                                ],
+                            'AED' => [
+                                'value' =>'UAE Dirham (AED)',
+                                'selected' => false
+                                ],
+                            'SAR' => [
+                                'value' =>'Saudi Riyal (SAR)',
+                                'selected' => false
+                                ],
+                            'SEK' => [
+                                'value' =>'Swedish Krona (SEK)',
+                                'selected' => false
+                                ],
+                            'NOK' => [
+                                'value' =>'Norwegian Krone (NOK)',
+                                'selected' => false
+                                ],
+                            'DKK' => [
+                                'value' =>'Danish Krone (DKK)',
+                                'selected' => false
+                                ],
+                            'MXN' => [
+                                'value' =>'Mexican Peso (MX$)',
+                                'selected' => false
+                                ],
+                            'BRL' => [
+                                'value' =>'Brazilian Real (R$)',
+                                'selected' => false
+                                ],
+                            'PLN' => [
+                                'value' =>'Polish Złoty (zł)',
+                                'selected' => false
+                            ]
                         ]"
                         />
 

@@ -18,8 +18,8 @@
         @if($default)
             <option disabled selected value="default" id="default">{{ $default }}</option>
         @endif
-        @foreach($options as $id => $value)
-            <option {{ old($name) == $id ? 'selected' : '' }} id="{{ $id }}" value="{{ $id }}">{{ $value }}</option>
+        @foreach($options as $id => $option)
+            <option {{ $option['selected'] ? 'selected' : '' }} id="{{ $id }}" value="{{ $id }}">{{ $option['value'] }}</option>
         @endforeach
     </select>
     @error($name)
