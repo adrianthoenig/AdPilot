@@ -19,11 +19,11 @@
             <option disabled selected value="default" id="default">{{ $default }}</option>
         @endif
         @foreach($options as $id => $option)
-            @isset($options['selected'])
-                <option {{ $option['selected'] ? 'selected' : '' }} id="{{ $id }}" value="{{ $id }}">{{ $option['value'] }}</option>
+            @if($option['selected'])
+                <option selected id="{{ $id }}" value="{{ $id }}">{{ $option['value'] }}</option>
             @else
                 <option id="{{ $id }}" value="{{ $id }}">{{ $option['value'] }}</option>
-            @endisset
+            @endif
         @endforeach
     </select>
     @error($name)
