@@ -3,13 +3,58 @@ import { capitalize } from './utils.js';
 // DOM Elements
 const clientForm = document.getElementById('client-form');
 
-// Form inputs
-const companyNameValue = document.getElementById('company-name');
-const clientStatusValue = document.querySelectorAll('input[name="client_status"]');
+// Company information
+const nameInput = document.getElementById('company-name');
+const industryInput = document.getElementById('industry');
+const websiteInput = document.getElementById('website');
+const countryInput = document.getElementById('country');
+const cityInput = document.getElementById('city');
+const logoInput = document.getElementById('logo');
+
+// Primary contact
+const contactNameInput = document.getElementById('contact_name');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone');
+const jobTitleInput = document.getElementById('job_title');
+
+// Client status
+const clientStatusInput = document.querySelectorAll('input[name="client_status"]');
+
+// Budget and schedule
+const startDateInput = document.getElementById('start_date');
+const currencyInput = document.getElementById('currency');
+const monthlyBudgetInput = document.getElementById('monthly_budget');
+
+// Advertising platforms
+const platformsInput = document.getElementById('input[name="advertising_platforms"]');
+
+// Form inputs array
+const formInputs = [
+    nameInput,
+    industryInput,
+    websiteInput,
+    countryInput,
+    cityInput,
+    logoInput,
+    contactNameInput,
+    emailInput,
+    phoneInput,
+    jobTitleInput,
+    clientStatusInput,
+    startDateInput,
+    currencyInput,
+    monthlyBudgetInput,
+    platformsInput
+];
 
 // Summary details
 const companyNameEl = document.getElementById('company-name-detail');
 const clientStatusEl = document.getElementById('client-status-detail');
+
+// Count required fields
+function countRequiredFields() {
+    // ...
+}
 
 // Create 'Pending' state
 function setPending(parentEl, message = 'Pending') {
@@ -22,7 +67,7 @@ function setPending(parentEl, message = 'Pending') {
 // Update company name
 function updateCompanyName() {
     // Check if value is empty
-    const companyName = companyNameValue.value;
+    const companyName = nameInput.value;
 
     // If empty, set 'Pending' state
     if(!companyName) {
@@ -37,7 +82,7 @@ function updateCompanyName() {
 
 // Get checked client status
 function getCheckedClientStatus() {
-    const [ clientStatus ] = [...clientStatusValue]
+    const [ clientStatus ] = [...clientStatusInput]
         .filter(clientStatus => clientStatus.checked);
     
     // In case there's non selected yet
@@ -68,6 +113,10 @@ function updateSummary() {
 
     // Update client status
     updateClientStatus();
+}
+
+function initSummary() {
+
 }
 
 // Change event listener
