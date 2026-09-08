@@ -30,9 +30,7 @@ function updateCompanyName() {
     }
 
     // Update company name value
-    setTimeout(() => {
-        companyNameEl.textContent = companyName;
-    }, 1000);
+    companyNameEl.textContent = companyName;
 }
 
 function updateSummary() {
