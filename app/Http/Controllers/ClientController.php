@@ -50,11 +50,9 @@ class ClientController extends Controller
         return view('dashboard.clients.show')->with('client', $client);
     }
 
-    /*
-    public function edit() : View {
-        return view('');
+    public function edit(Client $client) : View {
+        return view('dashboard.clients.edit')->with('client', $client);
     }
-    */
 
     public function update() {
 
