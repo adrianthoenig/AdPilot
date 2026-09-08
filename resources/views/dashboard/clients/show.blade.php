@@ -6,19 +6,15 @@
         @endif
 
         {{-- Client actions --}}
-        <div class="flex items-center justify-between mb-8">
-            <h1 class="text-4xl text-black">{{ $client->name }}</h1>
+        <x-dashboard.shell title="{{ $client->name }}">
+            <form action="{{ route('dashboard.clients.destroy', $client->id) }}" method="POST">
+                @method('DELETE')
+                <x-inputs.submit title="Delete client" />
+            </form>
 
-            <div class="flex items-center gap-2">
-                <form action="{{ route('dashboard.clients.destroy', $client->id) }}" method="POST">
-                    @method('DELETE')
-                    <x-inputs.submit title="Delete client"  />
-                </form>
-
-                <x-dashboard.buttons.primary-btn title="Edit client"
-                    url="{{ route('dashboard.clients.edit', $client->id) }}" />
-            </div>
-        </div>
+            <x-dashboard.buttons.primary-btn title="Edit client"
+                url="{{ route('dashboard.clients.edit', $client->id) }}" />
+        </x-dashboard.shell>
 
     </x-dashboard.main>
 </x-dashboard-layout>
