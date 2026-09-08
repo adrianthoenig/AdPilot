@@ -183,7 +183,7 @@
                         <x-inputs.text
                         id="phone"
                         name="phone"
-                        type="number"
+                        type="text"
                         placeholder="+34 678 948 374"
                         label="Phone number"
                         maxlength="25"
