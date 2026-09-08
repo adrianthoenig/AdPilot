@@ -40,7 +40,7 @@ const formInputs = [
     emailInput,
     phoneInput,
     jobTitleInput,
-    clientStatusInput,
+    ...clientStatusInput,
     startDateInput,
     currencyInput,
     monthlyBudgetInput,
@@ -50,10 +50,17 @@ const formInputs = [
 // Summary details
 const companyNameEl = document.getElementById('company-name-detail');
 const clientStatusEl = document.getElementById('client-status-detail');
+const totalFieldsFill = document.getElementById('total-fields-fill');
+const totalFieldsMax = document.getElementById('total-fields-max');
+const requiredFieldsFill = document.getElementById('required-fields-fill');
+const requiredFieldsMax = document.getElementById('required-fields-max');
 
 // Count required fields
 function countRequiredFields() {
-    // ...
+    console.log('ADVERT PLATFORMS:', platformsInput);
+
+    return formInputs
+        .forEach(input => console.log(input));
 }
 
 // Create 'Pending' state
@@ -116,8 +123,16 @@ function updateSummary() {
 }
 
 function initSummary() {
+    // Set total fields MAX
+    totalFieldsMax.textContent = formInputs.length;
 
+    // Set total REQUIRED fields
+    const totalRequired = countRequiredFields();
+    console.log(totalRequired);
 }
+
+// ### DO NOT REMOVE ###
+initSummary();
 
 // Change event listener
 clientForm.addEventListener('input', updateSummary);
