@@ -1,11 +1,11 @@
 <x-dashboard-layout>
     <x-dashboard.main title="Add new client">
-        <form action="/dashboard/clients/" method="POST" id="create-client-form" class="flex items-start gap-6"
+        <form action="/dashboard/clients/" method="POST" id="client-form" class="flex items-start gap-6"
             enctype="multipart/form-data">
             @csrf
             <div class="bg-white flex-1 p-6 rounded-3xl flex flex-col gap-8">
                 <x-dashboard.forms.form-block label="Company information">
-                    <x-inputs.text id="name" name="name" placeholder="MogulZ Media" label="Company Name" required="true"
+                    <x-inputs.text id="company-name" name="name" placeholder="MogulZ Media" label="Company Name" required="true"
                         maxlength="120" />
 
                     <x-inputs.select id="industry" name="industry" label="Industry"
@@ -326,8 +326,8 @@
             </div>
             <x-dashboard.summary.summary-container>
                 <x-dashboard.summary.summary-details title="Add client">
-                    <x-dashboard.summary.summary-detail id="company-name-value" title="Company name" />
-                    <x-dashboard.summary.summary-detail id="client-status-value" title="Client status" />
+                    <x-dashboard.summary.summary-detail id="company-name-detail" title="Company name" />
+                    <x-dashboard.summary.summary-detail id="client-status-detail" title="Client status" />
 
                     {{-- Total fields (DYNAMIC) --}}
                     <div class="flex items-center justify-between gap-25">

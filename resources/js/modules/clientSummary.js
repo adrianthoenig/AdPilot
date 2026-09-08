@@ -1,255 +1,44 @@
 import { capitalize } from './utils.js';
 
+// DOM Elements
+const clientForm = document.getElementById('client-form');
+
 // Form inputs
-const clientForm = document.getElementById('create-client-form');
-const inputs = clientForm.querySelectorAll('input');
-const radios = clientForm.querySelectorAll('input[type="radio"]');
-const selects = clientForm.querySelectorAll('select');
+const companyNameValue = document.getElementById('company-name');
 
 // Summary details
-const totalFieldsMax = document.getElementById('total-fields-max');
-const totalFieldsFilled = document.getElementById('total-fields-fill');
+const companyNameEl = document.getElementById('company-name-detail');
+const clientStatusEl = document.getElementById('client-status-detail');
 
-const totalRequiredMax = document.getElementById('required-fields-max');
-const totalRequiredFilled = document.getElementById('required-fields-fill');
-
-const companyName = document.getElementById('company-name-value');
-const clientStatusEl = document.getElementById('client-status-value');
-const statusValue = document.getElementById('status-value');
-const submitBtn = document.getElementById('submit-client-btn');
-
-// Exluded input types
-const excludedTypes = [
-    'hidden',
-    'submit',
-    'radio'
-];
-
-/***
- * Total fields: 15
- * Required fields: 5
- */
-
-// Divide radios per group
-function getRadioGroupNames() {
-    if (!clientForm) return;
-
-    return [...new Set(
-        [...radios].map(radio => radio.name)
-    )];
-}
-
-function divideRadioGroups() {
-    if (!clientForm) return;
-
-    const groups = [];
-
-
-    getRadioGroupNames()
-        .forEach((groupName, index) => {
-            groups[index] = [...radios].filter(radio => radio.name === groupName);
-        })
-
-    return groups;
-}
-
-// Get all fields
-function getAllFields() {
-    return [...inputs, ...radios, ...selects];
-}
-
-// Count total fields
-function countTotalFields() {
-    if (!clientForm) return;
-
-    let sum = 0;
-
-    // Count inputs
-    sum += [...inputs]
-        .filter(el => !excludedTypes.includes(el.type))
-        .length;
-
-
-    // Divide radios per group
-    sum += divideRadioGroups().length;
-
-    // Count selects
-    sum += selects.length;
-
-    return sum;
-
-}
-
-// Count required inputs
-function countRequired() {
-    if (!clientForm) return;
-
-    let sum = 0;
-
-    // Get required fields
-    sum += getAllFields()
-        .filter(field => field.type !== 'radio')
-        .filter(field => field.hasAttribute('required')).length;
-
-    // Check for single radio required fields
-    divideRadioGroups().forEach(radioGroup => {
-        sum += radioGroup.some(radio => radio.hasAttribute('required'));
-    })
-
-
-    return sum;
-
-}
-
-// Set total and required fields
-function setMaxFields() {
-    totalFieldsMax.textContent = countTotalFields();
-    totalRequiredMax.textContent = countRequired();
-}
-
-// Get fields filled count
-function getFilledCount() {
-    let sum = 0;
-
-    // Count inputs filled
-    sum += [...inputs]
-        .filter(input => !excludedTypes.includes(input.type))
-        .filter(input => input.value !== '')
-        .length;
-
-    // Count select options filled
-    selects.forEach(select => {
-        if (select.value && select.value !== 'default') {
-            sum++;
-        }
-    })
-
-    // Sum radio buttons filled
-    radios.forEach(radio => {
-        if (radio.checked) {
-            sum++;
-        }
-    })
-
-    return sum;
-
-}
-
-// Get required fields filled count
-function getRequiredFilledCount() {
-    let sum = 0;
-
-    // Sum required inputs
-    sum += [...inputs]
-        .filter(input => !excludedTypes.includes(input.type))
-        .filter(input => input.hasAttribute('required'))
-        .filter(input => input.value !== '')
-        .length;
-
-    // Sum required selects
-    selects.forEach(select => {
-        if (select.value && select.value !== 'default' && select.hasAttribute('required')) {
-            sum++;
-        }
-    })
-
-    // Sum required radios
-    sum += [...radios]
-        .filter(radio => radio.hasAttribute('required'))
-        .filter(radio => radio.checked)
-        .length;
-
-    return sum;
-}
-
-function createPendingSpan(parentEl) {
-    // Create 'pending' span element
-    const span = document.createElement('span');
-    span.className = 'text-gray-400 animate-pulse';
-    span.textContent = 'Pending';
-
-    parentEl.textContent = '';
-    parentEl.append(span);
+// Create 'Pending' state
+function setPending(parentEl, message = 'Pending') {
+    const pendingSpan = document.createElement('span');
+    pendingSpan.className = 'text-gray-400 animate-pulse';
+    pendingSpan.textContent = message;
+    parentEl.append(pendingSpan);
 }
 
 // Update company name
 function updateCompanyName() {
-    if (!clientForm) return;
-    let companyNameValue = document.getElementById('name').value;
+    // Check if value is empty
+    let companyName = companyNameValue.value;
 
-    if (!companyNameValue) {
-        createPendingSpan(companyName);
-        return;
-    }
-    companyName.textContent = companyNameValue;
-}
-
-// Update client status
-function updateClientStatus() {
-    if (!clientForm) return;
-
-    const clientStatus = clientForm.querySelector('input[name="client_status"]:checked')?.value;
-    if (clientStatus) {
-        clientStatusEl.textContent = capitalize(clientStatus);
+    // If empty, set 'Pending' state
+    if(!companyName) {
+        setPending(companyNameEl);
         return;
     }
 
-    createPendingSpan(clientStatusEl);
+    // Update company name value
+    setTimeout(() => {
+        companyNameEl.textContent = companyName;
+    }, 1000);
 }
 
-// Update required status
-function updateRequiredStatus() {
-    if (getRequiredFilledCount() === countRequired()) {
-        // Change required text styles
-        totalRequiredFilled.className = 'text-green-500';
-
-        // Change status message
-        statusValue.textContent = 'Ready';
-        statusValue.className = 'text-green-500 animate-pulse';
-
-        // Make submit button available
-        submitBtn.removeAttribute('disabled');
-        submitBtn.className = 'cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-primary-400 hover:bg-primary-500 transition-colors rounded-lg text-white flex items-center gap-2';
-
-        return;
-    }
-
-    // Reset to default
-    totalRequiredFilled.className = 'text-red-500';
-
-    // Change status message
-    statusValue.textContent = 'Not ready';
-    statusValue.className = 'text-red-500 animate-pulse';
-
-    submitBtn.setAttribute('disabled', true);
-    submitBtn.className = 'flex items-center justify-center gap-2 px-4 py-3 bg-primary-200 transition-colors rounded-lg text-white flex items-center gap-2';
-
-}
-
-// Update summary
 function updateSummary() {
-    // Update total and required fields
-    totalFieldsFilled.textContent = getFilledCount();
-    totalRequiredFilled.textContent = getRequiredFilledCount();
-
-    // Required completed
-    updateRequiredStatus();
-
-    // Update company name
+    // Update client name
     updateCompanyName();
-
-    // Update client status
-    updateClientStatus();
-
 }
 
-// Init summary
-function initSummary() {
-    // Update total and required fields
-    setMaxFields();
-}
-
-initSummary();
-
-// Event listener
+// Change event listener
 clientForm.addEventListener('input', updateSummary);
