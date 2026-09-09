@@ -18,7 +18,7 @@ const phoneInput = document.getElementById('phone');
 const jobTitleInput = document.getElementById('job_title');
 
 // Client status
-const clientStatusInput = document.querySelectorAll('input[name="client_status"]');
+const clientStatusInput = Array.from(document.querySelectorAll('input[name="client_status"]'));
 
 // Budget and schedule
 const startDateInput = document.getElementById('start_date');
@@ -26,7 +26,7 @@ const currencyInput = document.getElementById('currency');
 const monthlyBudgetInput = document.getElementById('monthly_budget');
 
 // Advertising platforms
-const platformsInput = document.getElementById('input[name="advertising_platforms"]');
+const platformsInput = Array.from(document.querySelectorAll('input[name="advertising_platforms"]'));
 
 // Form inputs array
 const formInputs = [
@@ -40,12 +40,17 @@ const formInputs = [
     emailInput,
     phoneInput,
     jobTitleInput,
-    ...clientStatusInput,
+    Array.from(clientStatusInput),
     startDateInput,
     currencyInput,
     monthlyBudgetInput,
     platformsInput
 ];
+
+/**
+ * Total fields: 15
+ * Required fields: 4
+ */
 
 // Summary details
 const companyNameEl = document.getElementById('company-name-detail');
@@ -57,10 +62,44 @@ const requiredFieldsMax = document.getElementById('required-fields-max');
 
 // Count required fields
 function countRequiredFields() {
-    console.log('ADVERT PLATFORMS:', platformsInput);
+    // should return 4
+}
 
-    return formInputs
-        .forEach(input => console.log(input));
+function getFieldInputs(inputs) {
+    return inputs.flat().filter(input => input.type !== 'radio');
+}
+
+function getRadioInputs(inputs) {
+    return inputs.flat().filter(input => input.type === 'radio');
+}
+
+function getRadioGroupNames(inputs) {
+    return [...new Set(inputs.map(radio => radio.name))];
+}
+
+function separateRadioGroups(radioInputs) {
+    const radioGroups = [];
+
+    // Separate by radio names
+    const names = getRadioGroupNames(radioInputs);
+
+    names.forEach((radioName, index) => {
+        radioGroups[index] = radioInputs.filter(radio => radio.name === radioName);
+    })
+
+    return radioGroups;
+}
+
+// Get total fields
+function countTotalFields(inputs) {
+    // Count total fields (except radios)
+    const totalFieldInputs = getFieldInputs(inputs).length;
+    
+    // Count radio groups
+    const radioInputs = getRadioInputs(inputs);
+    const totalRadioGroups = separateRadioGroups(radioInputs).length;
+
+    return totalFieldInputs + totalRadioGroups;
 }
 
 // Create 'Pending' state
@@ -124,11 +163,10 @@ function updateSummary() {
 
 function initSummary() {
     // Set total fields MAX
-    totalFieldsMax.textContent = formInputs.length;
+    totalFieldsMax.textContent = countTotalFields(formInputs);
 
     // Set total REQUIRED fields
-    const totalRequired = countRequiredFields();
-    console.log(totalRequired);
+    requiredFieldsMax.textContent = countRequiredFields(formInputs);
 }
 
 // ### DO NOT REMOVE ###
