@@ -1,255 +1,333 @@
 import { capitalize } from './utils.js';
 
-// Form inputs
-const clientForm = document.getElementById('create-client-form');
-const inputs = clientForm.querySelectorAll('input');
-const radios = clientForm.querySelectorAll('input[type="radio"]');
-const selects = clientForm.querySelectorAll('select');
+// DOM Elements
+const clientForm = document.getElementById('client-form');
 
-// Summary details
-const totalFieldsMax = document.getElementById('total-fields-max');
-const totalFieldsFilled = document.getElementById('total-fields-fill');
+// Company information
+const nameInput = document.getElementById('company-name');
+const industryInput = document.getElementById('industry');
+const websiteInput = document.getElementById('website');
+const countryInput = document.getElementById('country');
+const cityInput = document.getElementById('city');
+const logoInput = document.getElementById('logo');
 
-const totalRequiredMax = document.getElementById('required-fields-max');
-const totalRequiredFilled = document.getElementById('required-fields-fill');
+// Primary contact
+const contactNameInput = document.getElementById('contact_name');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone');
+const jobTitleInput = document.getElementById('job_title');
 
-const companyName = document.getElementById('company-name-value');
-const clientStatusEl = document.getElementById('client-status-value');
-const statusValue = document.getElementById('status-value');
-const submitBtn = document.getElementById('submit-client-btn');
+// Client status
+const clientStatusInput = Array.from(document.querySelectorAll('input[name="client_status"]'));
 
-// Exluded input types
-const excludedTypes = [
-    'hidden',
-    'submit',
-    'radio'
+// Budget and schedule
+const startDateInput = document.getElementById('start_date');
+const currencyInput = document.getElementById('currency');
+const monthlyBudgetInput = document.getElementById('monthly_budget');
+
+// Advertising platforms
+const platformsInput = Array.from(document.querySelectorAll('input[name="advertising_platforms"]'));
+
+// Form inputs array
+const formInputs = [
+    nameInput,
+    industryInput,
+    websiteInput,
+    countryInput,
+    cityInput,
+    logoInput,
+    contactNameInput,
+    emailInput,
+    phoneInput,
+    jobTitleInput,
+    Array.from(clientStatusInput),
+    startDateInput,
+    currencyInput,
+    monthlyBudgetInput,
+    platformsInput
 ];
 
-/***
+/**
  * Total fields: 15
  * Required fields: 5
  */
 
-// Divide radios per group
-function getRadioGroupNames() {
-    if (!clientForm) return;
+// Summary details
+const companyNameEl = document.getElementById('company-name-detail');
+const clientStatusEl = document.getElementById('client-status-detail');
+const totalFieldsFill = document.getElementById('total-fields-fill');
+const totalFieldsMax = document.getElementById('total-fields-max');
+const requiredFieldsFill = document.getElementById('required-fields-fill');
+const requiredFieldsMax = document.getElementById('required-fields-max');
 
-    return [...new Set(
-        [...radios].map(radio => radio.name)
-    )];
+const formStatus = document.getElementById('form-status');
+
+const submitBtn = document.getElementById('submit-client-btn');
+
+// Global constants
+const STATUS_CHIP_READY_TITLE = 'Ready';
+const STATUS_CHIP_NOT_READY_TTILE = 'Not Ready';
+
+function getFieldInputs(inputs) {
+    return inputs.flat().filter(input => input.type !== 'radio');
 }
 
-function divideRadioGroups() {
-    if (!clientForm) return;
-
-    const groups = [];
-
-
-    getRadioGroupNames()
-        .forEach((groupName, index) => {
-            groups[index] = [...radios].filter(radio => radio.name === groupName);
-        })
-
-    return groups;
+function getTextInputs(inputs) {
+    return inputs.filter(input => input.type !== 'select-one' && input.type !== 'radio' && !Array.isArray(input));
 }
 
-// Get all fields
-function getAllFields() {
-    return [...inputs, ...radios, ...selects];
+function getSelectInputs(inputs) {
+    return inputs.filter(input => input.type === 'select-one');
 }
 
-// Count total fields
-function countTotalFields() {
-    if (!clientForm) return;
-
-    let sum = 0;
-
-    // Count inputs
-    sum += [...inputs]
-        .filter(el => !excludedTypes.includes(el.type))
-        .length;
-
-
-    // Divide radios per group
-    sum += divideRadioGroups().length;
-
-    // Count selects
-    sum += selects.length;
-
-    return sum;
-
+function getRadioInputs(inputs) {
+    return inputs.flat().filter(input => input.type === 'radio');
 }
 
-// Count required inputs
-function countRequired() {
-    if (!clientForm) return;
+function getRadioGroupNames(inputs) {
+    return [...new Set(inputs.map(radio => radio.name))];
+}
 
-    let sum = 0;
+function separateRadioGroups(radioInputs) {
+    const radioGroups = [];
 
-    // Get required fields
-    sum += getAllFields()
-        .filter(field => field.type !== 'radio')
-        .filter(field => field.hasAttribute('required')).length;
+    // Separate by radio names
+    const names = getRadioGroupNames(radioInputs);
 
-    // Check for single radio required fields
-    divideRadioGroups().forEach(radioGroup => {
-        sum += radioGroup.some(radio => radio.hasAttribute('required'));
+    names.forEach((radioName, index) => {
+        radioGroups[index] = radioInputs.filter(radio => radio.name === radioName);
     })
 
-
-    return sum;
-
+    return radioGroups;
 }
 
-// Set total and required fields
-function setMaxFields() {
-    totalFieldsMax.textContent = countTotalFields();
-    totalRequiredMax.textContent = countRequired();
+// Get total fields
+function countTotalFields(inputs) {
+    // Count total fields (except radios)
+    const totalFieldInputs = getFieldInputs(inputs).length;
+
+    // Count radio groups
+    const radioInputs = getRadioInputs(inputs);
+    const totalRadioGroups = separateRadioGroups(radioInputs).length;
+
+    return totalFieldInputs + totalRadioGroups;
 }
 
-// Get fields filled count
-function getFilledCount() {
-    let sum = 0;
+// Count required fields
+function countRequiredFields(inputs) {
+    // Count total required fields (except radios)
+    const requiredInputs = getFieldInputs(inputs)
+        .filter(input => input.hasAttribute('required')).length;
 
-    // Count inputs filled
-    sum += [...inputs]
-        .filter(input => !excludedTypes.includes(input.type))
-        .filter(input => input.value !== '')
-        .length;
+    // Count total required radio groups
+    const requiredRadios = getRadioInputs(inputs).filter(radio => radio.hasAttribute('required'));
+    const requiredRadioGroups = separateRadioGroups(requiredRadios).length;
 
-    // Count select options filled
-    selects.forEach(select => {
-        if (select.value && select.value !== 'default') {
-            sum++;
-        }
-    })
-
-    // Sum radio buttons filled
-    radios.forEach(radio => {
-        if (radio.checked) {
-            sum++;
-        }
-    })
-
-    return sum;
-
+    return requiredInputs + requiredRadioGroups;
 }
 
-// Get required fields filled count
-function getRequiredFilledCount() {
-    let sum = 0;
+function countTotalFilled(inputs) {
+    // Filter filled vs non-filled inputs
+    const totalFilled = getTextInputs(inputs)
+        .filter(input => input.value !== '').length;
 
-    // Sum required inputs
-    sum += [...inputs]
-        .filter(input => !excludedTypes.includes(input.type))
+    const totalSelected = getSelectInputs(inputs)
+        .filter(select => select.value !== 'default').length;
+
+    // Count radio's checked
+    const totalRadios = getRadioInputs(inputs)
+        .filter(radio => radio.checked).length;
+
+    return totalFilled + totalSelected + totalRadios;
+}
+
+function countRequiredFilled(inputs) {
+    // Filter filled vs non-filled inputs
+    const totalFilled = getTextInputs(inputs)
         .filter(input => input.hasAttribute('required'))
-        .filter(input => input.value !== '')
-        .length;
+        .filter(input => input.value !== '').length;
 
-    // Sum required selects
-    selects.forEach(select => {
-        if (select.value && select.value !== 'default' && select.hasAttribute('required')) {
-            sum++;
-        }
-    })
+    const totalSelected = getSelectInputs(inputs)
+        .filter(select => select.hasAttribute('required'))
+        .filter(select => select.value !== 'default').length;
 
-    // Sum required radios
-    sum += [...radios]
+    const totalRadios = getRadioInputs(inputs)
         .filter(radio => radio.hasAttribute('required'))
-        .filter(radio => radio.checked)
-        .length;
+        .filter(radio => radio.checked).length;
 
-    return sum;
+    return totalFilled + totalSelected + totalRadios;
 }
 
-function createPendingSpan(parentEl) {
-    // Create 'pending' span element
-    const span = document.createElement('span');
-    span.className = 'text-gray-400 animate-pulse';
-    span.textContent = 'Pending';
+function updateTotalFilled(inputs) {
+    totalFieldsFill.textContent = countTotalFilled(inputs);
+}
 
-    parentEl.textContent = '';
-    parentEl.append(span);
+function updateRequiredFilled(inputs) {
+    const requiredFilled = countRequiredFilled(inputs);
+    requiredFieldsFill.textContent = requiredFilled;
+}
+
+// Create 'Pending' state
+function setPending(parentEl, message = 'Pending') {
+    const pendingSpan = document.createElement('span');
+    pendingSpan.className = 'text-gray-400 animate-pulse';
+    pendingSpan.textContent = message;
+    parentEl.append(pendingSpan);
+}
+
+// Create status chip
+function createStatusChip(ready = false, title = STATUS_CHIP_NOT_READY_TTILE) {
+    const chip = document.createElement('div');
+    chip.id = 'status-chip';
+    chip.className = 'block cursor-pointer transition-colors text-sm p-2 rounded-sm flex items-center gap-2';
+
+    const animatedDot = document.createElement('div');
+    animatedDot.className = 'h-2 w-2 rounded-full animate-pulse';
+
+    const span = document.createElement('span');
+    span.textContent = title;
+
+    if (!ready) {
+        chip.className += ' bg-red-900 hover:bg-red-800 text-red-200';
+        animatedDot.classList.add('bg-red-200');
+        chip.append(animatedDot, span);
+        return chip;
+    }
+
+    chip.className += ' bg-emerald-950 hover:bg-emerald-800 text-emerald-200';
+    animatedDot.classList.add('bg-emerald-200');
+    chip.append(animatedDot, span);
+
+    return chip;
 }
 
 // Update company name
 function updateCompanyName() {
-    if (!clientForm) return;
-    let companyNameValue = document.getElementById('name').value;
+    // Check if value is empty
+    const companyName = nameInput.value;
 
-    if (!companyNameValue) {
-        createPendingSpan(companyName);
+    // If empty, set 'Pending' state
+    if (!companyName) {
+        companyNameEl.textContent = '';
+        setPending(companyNameEl);
         return;
     }
-    companyName.textContent = companyNameValue;
+
+    // Update company name value
+    companyNameEl.textContent = companyName;
+}
+
+// Get checked client status
+function getCheckedClientStatus() {
+    const [clientStatus] = [...clientStatusInput]
+        .filter(clientStatus => clientStatus.checked);
+
+    // In case there's non selected yet
+    if (!clientStatus) return;
+
+    return clientStatus.value;
 }
 
 // Update client status
 function updateClientStatus() {
-    if (!clientForm) return;
+    // Check if value is checked
+    const clientStatus = getCheckedClientStatus();
 
-    const clientStatus = clientForm.querySelector('input[name="client_status"]:checked')?.value;
-    if (clientStatus) {
-        clientStatusEl.textContent = capitalize(clientStatus);
+    // If empty, set 'Pending' state
+    if (!clientStatus) {
+        clientStatusEl.textContent = '';
+        setPending(clientStatusEl);
         return;
     }
 
-    createPendingSpan(clientStatusEl);
+    // Update client status value
+    clientStatusEl.textContent = capitalize(clientStatus);
 }
 
-// Update required status
-function updateRequiredStatus() {
-    if (getRequiredFilledCount() === countRequired()) {
-        // Change required text styles
-        totalRequiredFilled.className = 'text-green-500';
+function setReadySummary() {
+    // Make the required filled green
+    requiredFieldsFill.className = 'text-green-500 animate-pulse';
 
-        // Change status message
-        statusValue.textContent = 'Ready';
-        statusValue.className = 'text-green-500 animate-pulse';
+    // Set status chip to 'Ready'
+    setStatusChip(true);
 
-        // Make submit button available
-        submitBtn.removeAttribute('disabled');
-        submitBtn.className = 'cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-primary-400 hover:bg-primary-500 transition-colors rounded-lg text-white flex items-center gap-2';
+    // Make submit button available
+    submitBtn.className = 'cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-primary-400 hover:bg-primary-500 transition-colors rounded-lg text-white flex items-center gap-2';
+    submitBtn.removeAttribute('disabled');
+}
 
-        return;
-    }
+function setDisabledSummary() {
+    // Make the required filled red
+    requiredFieldsFill.className = 'text-red-500 animate-pulse';
 
-    // Reset to default
-    totalRequiredFilled.className = 'text-red-500';
+    // Set status chip to 'Not ready'
+    setStatusChip(false);
 
-    // Change status message
-    statusValue.textContent = 'Not ready';
-    statusValue.className = 'text-red-500 animate-pulse';
-
-    submitBtn.setAttribute('disabled', true);
+    // Make submit button disabled
     submitBtn.className = 'flex items-center justify-center gap-2 px-4 py-3 bg-primary-200 transition-colors rounded-lg text-white flex items-center gap-2';
-
+    submitBtn.setAttribute('disabled', true);
 }
 
-// Update summary
+function checkFormCompleted() {
+    const requiredFilled = countRequiredFilled(formInputs);
+    const requiredMin = countRequiredFields(formInputs);
+
+    if(requiredFilled === requiredMin) {
+        setReadySummary();
+        return;
+    }
+
+    setDisabledSummary();
+}
+
+function setStatusChip(ready) {
+    // Remove current status chip
+    const statusChip = document.getElementById('status-chip');
+    if (statusChip) {
+        document.getElementById('status-chip').remove();
+    }
+
+    // Option: Disabled
+    if (!ready) {
+        const chip = createStatusChip(ready, STATUS_CHIP_NOT_READY_TTILE);
+        formStatus.append(chip);
+        return;
+    }
+
+    const chip = createStatusChip(ready, STATUS_CHIP_READY_TITLE);
+    formStatus.append(chip);
+}
+
 function updateSummary() {
-    // Update total and required fields
-    totalFieldsFilled.textContent = getFilledCount();
-    totalRequiredFilled.textContent = getRequiredFilledCount();
-
-    // Required completed
-    updateRequiredStatus();
-
-    // Update company name
+    // Update client name
     updateCompanyName();
 
     // Update client status
     updateClientStatus();
 
+    // Update total and required fields filled
+    updateTotalFilled(formInputs);
+    updateRequiredFilled(formInputs);
+
+    // Check if form is completed
+    checkFormCompleted();
 }
 
-// Init summary
 function initSummary() {
-    // Update total and required fields
-    setMaxFields();
+    // Set total fields MAX and default filled values
+    totalFieldsMax.textContent = countTotalFields(formInputs);
+    updateTotalFilled(formInputs);
+
+    // Set total REQUIRED fields and default filled values
+    requiredFieldsMax.textContent = countRequiredFields(formInputs);
+    updateRequiredFilled(formInputs);
+
+    // Check if form is completed
+    checkFormCompleted();
 }
 
+// ### DO NOT REMOVE ###
 initSummary();
 
-// Event listener
+// Change event listener
 clientForm.addEventListener('input', updateSummary);

@@ -23,7 +23,7 @@ class ClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'name' => 'required|string|max:120',
+                'name' => 'required|string|max:1',
                 'industry' => 'required',
                 'website' => 'nullable|url|max:255',
                 'country' => 'nullable|string|max:100',
