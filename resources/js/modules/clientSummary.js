@@ -120,13 +120,43 @@ function countRequiredFields(inputs) {
 
 function countTotalFilled(inputs) {
     // Filter filled vs non-filled inputs
-    const totalFilledInputs = getTextInputs(inputs)
+    const totalFilled = getTextInputs(inputs)
         .filter(input => input.value !== '').length;
 
-    const totalSelectedInputs = getSelectInputs(inputs)
+    const totalSelected = getSelectInputs(inputs)
         .filter(select => select.value !== 'default').length;
 
-    return totalFilledInputs + totalSelectedInputs;
+    // Count radio's checked
+    const totalRadios = getRadioInputs(inputs)
+        .filter(radio => radio.checked).length;
+
+    return totalFilled + totalSelected + totalRadios;
+}
+
+function countRequiredFilled(inputs) {
+    // Filter filled vs non-filled inputs
+    const totalFilled = getTextInputs(inputs)
+        .filter(input => input.hasAttribute('required'))
+        .filter(input => input.value !== '').length;
+
+    const totalSelected = getSelectInputs(inputs)
+        .filter(select => select.hasAttribute('required'))
+        .filter(select => select.value !== 'default').length;
+
+    const totalRadios = getRadioInputs(inputs)
+        .filter(radio => radio.hasAttribute('required'))
+        .filter(radio => radio.checked).length;
+
+    return totalFilled + totalSelected + totalRadios;
+}
+
+function updateTotalFilled(inputs) {
+    totalFieldsFill.textContent = countTotalFilled(inputs);
+}
+
+function updateRequiredFilled(inputs) {
+    const requiredFilled = countRequiredFilled(inputs);
+    requiredFieldsFill.textContent = requiredFilled;
 }
 
 // Create 'Pending' state
@@ -187,16 +217,19 @@ function updateSummary() {
     // Update client status
     updateClientStatus();
 
-    // Update total fields filled
-    totalFieldsFill.textContent = countTotalFilled(formInputs);
+    // Update total and required fields filled
+    updateTotalFilled(formInputs);
+    updateRequiredFilled(formInputs);
 }
 
 function initSummary() {
-    // Set total fields MAX
+    // Set total fields MAX and default filled values
     totalFieldsMax.textContent = countTotalFields(formInputs);
+    updateTotalFilled(formInputs);
 
-    // Set total REQUIRED fields
+    // Set total REQUIRED fields and default filled values
     requiredFieldsMax.textContent = countRequiredFields(formInputs);
+    updateRequiredFilled(formInputs);
 }
 
 // ### DO NOT REMOVE ###
