@@ -49,7 +49,7 @@ const formInputs = [
 
 /**
  * Total fields: 15
- * Required fields: 4
+ * Required fields: 5
  */
 
 // Summary details
@@ -62,6 +62,14 @@ const requiredFieldsMax = document.getElementById('required-fields-max');
 
 function getFieldInputs(inputs) {
     return inputs.flat().filter(input => input.type !== 'radio');
+}
+
+function getTextInputs(inputs) {
+    return inputs.filter(input => input.type !== 'select-one' && input.type !== 'radio' && !Array.isArray(input));
+}
+
+function getSelectInputs(inputs) {
+    return inputs.filter(input => input.type === 'select-one');
 }
 
 function getRadioInputs(inputs) {
@@ -108,6 +116,17 @@ function countRequiredFields(inputs) {
     const requiredRadioGroups = separateRadioGroups(requiredRadios).length;
 
     return requiredInputs + requiredRadioGroups;
+}
+
+function countTotalFilled(inputs) {
+    // Filter filled vs non-filled inputs
+    const totalFilledInputs = getTextInputs(inputs)
+        .filter(input => input.value !== '').length;
+
+    const totalSelectedInputs = getSelectInputs(inputs)
+        .filter(select => select.value !== 'default').length;
+
+    return totalFilledInputs + totalSelectedInputs;
 }
 
 // Create 'Pending' state
@@ -167,6 +186,9 @@ function updateSummary() {
 
     // Update client status
     updateClientStatus();
+
+    // Update total fields filled
+    totalFieldsFill.textContent = countTotalFilled(formInputs);
 }
 
 function initSummary() {
