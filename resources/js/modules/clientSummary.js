@@ -60,11 +60,6 @@ const totalFieldsMax = document.getElementById('total-fields-max');
 const requiredFieldsFill = document.getElementById('required-fields-fill');
 const requiredFieldsMax = document.getElementById('required-fields-max');
 
-// Count required fields
-function countRequiredFields() {
-    // should return 4
-}
-
 function getFieldInputs(inputs) {
     return inputs.flat().filter(input => input.type !== 'radio');
 }
@@ -100,6 +95,19 @@ function countTotalFields(inputs) {
     const totalRadioGroups = separateRadioGroups(radioInputs).length;
 
     return totalFieldInputs + totalRadioGroups;
+}
+
+// Count required fields
+function countRequiredFields(inputs) {
+    // Count total required fields (except radios)
+    const requiredInputs = getFieldInputs(inputs)
+        .filter(input => input.hasAttribute('required')).length;
+
+    // Count total required radio groups
+    const requiredRadios = getRadioInputs(inputs).filter(radio => radio.hasAttribute('required'));
+    const requiredRadioGroups = separateRadioGroups(requiredRadios).length;
+
+    return requiredInputs + requiredRadioGroups;
 }
 
 // Create 'Pending' state
