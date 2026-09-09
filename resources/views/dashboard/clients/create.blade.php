@@ -5,8 +5,8 @@
             @csrf
             <div class="bg-white flex-1 p-6 rounded-3xl flex flex-col gap-8">
                 <x-dashboard.forms.form-block label="Company information">
-                    <x-inputs.text id="company-name" name="name" placeholder="MogulZ Media" label="Company Name" required="true"
-                        maxlength="120" />
+                    <x-inputs.text id="company-name" name="name" placeholder="MogulZ Media" label="Company Name"
+                        required="true" maxlength="120" />
 
                     <x-inputs.select id="industry" name="industry" label="Industry"
                         default="Select your clients industry" :options="[
@@ -333,7 +333,7 @@
                     <div class="flex items-center justify-between gap-25">
                         <p class="text-gray-600 whitespace-nowrap">Total fields</p>
                         <p>
-                            <span id="total-fields-fill" class="text-ellipsis">0</span> / <span
+                            <span id="total-fields-fill" class="text-ellipsis animate-pulse">0</span> / <span
                                 id="total-fields-max">13</span>
                         </p>
                     </div>
@@ -342,13 +342,19 @@
                     <div class="flex items-center justify-between gap-25">
                         <p class="text-gray-600 whitespace-nowrap">Required fields</p>
                         <p>
-                            <span id="required-fields-fill" class="text-red-500">0</span> / <span
+                            <span id="required-fields-fill" class="text-red-500 animate-pulse">0</span> / <span
                                 id="required-fields-max">4</span>
                         </p>
                     </div>
+
+                    {{-- Form status (DYNAMIC) --}}
+                    <div id="form-status" class="flex items-center justify-between gap-25">
+                        <p class="text-gray-600 whitespace-nowrap">Form status</p>
+
+                    </div>
                 </x-dashboard.summary.summary-details>
                 <x-dashboard.summary.summary-submit>
-                    <x-inputs.submit title="Add new client" id="submit-client-btn" />
+                    <x-inputs.submit title="Add new client" disabled="true" id="submit-client-btn" />
                 </x-dashboard.summary.summary-submit>
             </x-dashboard.summary.summary-container>
         </form>

@@ -60,6 +60,14 @@ const totalFieldsMax = document.getElementById('total-fields-max');
 const requiredFieldsFill = document.getElementById('required-fields-fill');
 const requiredFieldsMax = document.getElementById('required-fields-max');
 
+const formStatus = document.getElementById('form-status');
+
+const submitBtn = document.getElementById('submit-client-btn');
+
+// Global constants
+const STATUS_CHIP_READY_TITLE = 'Ready';
+const STATUS_CHIP_NOT_READY_TTILE = 'Not Ready';
+
 function getFieldInputs(inputs) {
     return inputs.flat().filter(input => input.type !== 'radio');
 }
@@ -97,7 +105,7 @@ function separateRadioGroups(radioInputs) {
 function countTotalFields(inputs) {
     // Count total fields (except radios)
     const totalFieldInputs = getFieldInputs(inputs).length;
-    
+
     // Count radio groups
     const radioInputs = getRadioInputs(inputs);
     const totalRadioGroups = separateRadioGroups(radioInputs).length;
@@ -167,13 +175,39 @@ function setPending(parentEl, message = 'Pending') {
     parentEl.append(pendingSpan);
 }
 
+// Create status chip
+function createStatusChip(ready = false, title = STATUS_CHIP_NOT_READY_TTILE) {
+    const chip = document.createElement('div');
+    chip.id = 'status-chip';
+    chip.className = 'block cursor-pointer transition-colors text-sm p-2 rounded-sm flex items-center gap-2';
+
+    const animatedDot = document.createElement('div');
+    animatedDot.className = 'h-2 w-2 rounded-full animate-pulse';
+
+    const span = document.createElement('span');
+    span.textContent = title;
+
+    if (!ready) {
+        chip.className += ' bg-red-900 hover:bg-red-800 text-red-200';
+        animatedDot.classList.add('bg-red-200');
+        chip.append(animatedDot, span);
+        return chip;
+    }
+
+    chip.className += ' bg-emerald-950 hover:bg-emerald-800 text-emerald-200';
+    animatedDot.classList.add('bg-emerald-200');
+    chip.append(animatedDot, span);
+
+    return chip;
+}
+
 // Update company name
 function updateCompanyName() {
     // Check if value is empty
     const companyName = nameInput.value;
 
     // If empty, set 'Pending' state
-    if(!companyName) {
+    if (!companyName) {
         companyNameEl.textContent = '';
         setPending(companyNameEl);
         return;
@@ -185,11 +219,11 @@ function updateCompanyName() {
 
 // Get checked client status
 function getCheckedClientStatus() {
-    const [ clientStatus ] = [...clientStatusInput]
+    const [clientStatus] = [...clientStatusInput]
         .filter(clientStatus => clientStatus.checked);
-    
+
     // In case there's non selected yet
-    if(!clientStatus) return;
+    if (!clientStatus) return;
 
     return clientStatus.value;
 }
@@ -198,9 +232,9 @@ function getCheckedClientStatus() {
 function updateClientStatus() {
     // Check if value is checked
     const clientStatus = getCheckedClientStatus();
-    
+
     // If empty, set 'Pending' state
-    if(!clientStatus) {
+    if (!clientStatus) {
         clientStatusEl.textContent = '';
         setPending(clientStatusEl);
         return;
@@ -208,6 +242,60 @@ function updateClientStatus() {
 
     // Update client status value
     clientStatusEl.textContent = capitalize(clientStatus);
+}
+
+function setReadySummary() {
+    // Make the required filled green
+    requiredFieldsFill.className = 'text-green-500 animate-pulse';
+
+    // Set status chip to 'Ready'
+    setStatusChip(true);
+
+    // Make submit button available
+    submitBtn.className = 'cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-primary-400 hover:bg-primary-500 transition-colors rounded-lg text-white flex items-center gap-2';
+    submitBtn.removeAttribute('disabled');
+}
+
+function setDisabledSummary() {
+    // Make the required filled red
+    requiredFieldsFill.className = 'text-red-500 animate-pulse';
+
+    // Set status chip to 'Not ready'
+    setStatusChip(false);
+
+    // Make submit button disabled
+    submitBtn.className = 'flex items-center justify-center gap-2 px-4 py-3 bg-primary-200 transition-colors rounded-lg text-white flex items-center gap-2';
+    submitBtn.setAttribute('disabled', true);
+}
+
+function checkFormCompleted() {
+    const requiredFilled = countRequiredFilled(formInputs);
+    const requiredMin = countRequiredFields(formInputs);
+
+    if(requiredFilled === requiredMin) {
+        setReadySummary();
+        return;
+    }
+
+    setDisabledSummary();
+}
+
+function setStatusChip(ready) {
+    // Remove current status chip
+    const statusChip = document.getElementById('status-chip');
+    if (statusChip) {
+        document.getElementById('status-chip').remove();
+    }
+
+    // Option: Disabled
+    if (!ready) {
+        const chip = createStatusChip(ready, STATUS_CHIP_NOT_READY_TTILE);
+        formStatus.append(chip);
+        return;
+    }
+
+    const chip = createStatusChip(ready, STATUS_CHIP_READY_TITLE);
+    formStatus.append(chip);
 }
 
 function updateSummary() {
@@ -220,6 +308,9 @@ function updateSummary() {
     // Update total and required fields filled
     updateTotalFilled(formInputs);
     updateRequiredFilled(formInputs);
+
+    // Check if form is completed
+    checkFormCompleted();
 }
 
 function initSummary() {
@@ -230,6 +321,9 @@ function initSummary() {
     // Set total REQUIRED fields and default filled values
     requiredFieldsMax.textContent = countRequiredFields(formInputs);
     updateRequiredFilled(formInputs);
+
+    // Check if form is completed
+    checkFormCompleted();
 }
 
 // ### DO NOT REMOVE ###
